@@ -1,0 +1,3579 @@
+{
+  "version":"2.0",
+  "metadata":{
+    "apiVersion":"2018-05-10",
+    "auth":["aws.auth#sigv4"],
+    "endpointPrefix":"aidevops",
+    "protocol":"rest-json",
+    "protocols":["rest-json"],
+    "serviceFullName":"AWSDevOpsAgentControlPlaneService",
+    "serviceId":"AWSDevOpsAgentControlPlane",
+    "signatureVersion":"v4",
+    "signingName":"aidevops",
+    "uid":"aidevopscontrolplane-2018-05-10"
+  },
+  "operations":{
+    "AssociateService":{
+      "name":"AssociateService",
+      "http":{
+        "method":"POST",
+        "requestUri":"/v1/agentspaces/{agentSpaceId}/associations",
+        "responseCode":201
+      },
+      "input":{"shape":"AssociateServiceInput"},
+      "output":{"shape":"AssociateServiceOutput"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"ConflictException"},
+        {"shape":"InternalServerException"}
+      ],
+      "documentation":"<p>Adds a specific service association to an AgentSpace. It overwrites the existing association of the same service. Returns 201 Created on success.</p>"
+    },
+    "CreateAgentSpace":{
+      "name":"CreateAgentSpace",
+      "http":{
+        "method":"POST",
+        "requestUri":"/v1/agentspaces",
+        "responseCode":201
+      },
+      "input":{"shape":"CreateAgentSpaceInput"},
+      "output":{"shape":"CreateAgentSpaceOutput"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"ConflictException"},
+        {"shape":"ServiceQuotaExceededException"},
+        {"shape":"InternalServerException"}
+      ],
+      "documentation":"<p>Creates a new AgentSpace with the specified name and description. Duplicate space names are allowed.</p>",
+      "idempotent":true
+    },
+    "CreateOneTimeLoginSession":{
+      "name":"CreateOneTimeLoginSession",
+      "http":{
+        "method":"POST",
+        "requestUri":"/v1/agentspaces/{agentSpaceId}/operator/login-session",
+        "responseCode":200
+      },
+      "input":{"shape":"CreateOneTimeLoginSessionInput"},
+      "output":{"shape":"CreateOneTimeLoginSessionOutput"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServerException"}
+      ],
+      "documentation":"<p>Generate secure one-time session for initiating off-console Application login</p>"
+    },
+    "DeleteAgentSpace":{
+      "name":"DeleteAgentSpace",
+      "http":{
+        "method":"DELETE",
+        "requestUri":"/v1/agentspaces/{agentSpaceId}",
+        "responseCode":204
+      },
+      "input":{"shape":"DeleteAgentSpaceInput"},
+      "output":{"shape":"DeleteAgentSpaceOutput"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"ConflictException"},
+        {"shape":"InternalServerException"}
+      ],
+      "documentation":"<p>Deletes an AgentSpace. This operation is idempotent and returns a 204 No Content response on success.</p>",
+      "idempotent":true
+    },
+    "DeregisterService":{
+      "name":"DeregisterService",
+      "http":{
+        "method":"DELETE",
+        "requestUri":"/v1/services/{serviceId}",
+        "responseCode":200
+      },
+      "input":{"shape":"DeregisterServiceInput"},
+      "output":{"shape":"DeregisterServiceOutput"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"ConflictException"},
+        {"shape":"InternalServerException"}
+      ],
+      "documentation":"<p>Deregister a service</p>",
+      "idempotent":true
+    },
+    "DisableOperatorApp":{
+      "name":"DisableOperatorApp",
+      "http":{
+        "method":"DELETE",
+        "requestUri":"/v1/agentspaces/{agentSpaceId}/operator",
+        "responseCode":200
+      },
+      "input":{"shape":"DisableOperatorAppInput"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServerException"}
+      ],
+      "documentation":"<p>Disable the Operator App for the specified AgentSpace</p>",
+      "idempotent":true
+    },
+    "DisassociateService":{
+      "name":"DisassociateService",
+      "http":{
+        "method":"DELETE",
+        "requestUri":"/v1/agentspaces/{agentSpaceId}/associations/{associationId}",
+        "responseCode":204
+      },
+      "input":{"shape":"DisassociateServiceInput"},
+      "output":{"shape":"DisassociateServiceOutput"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServerException"}
+      ],
+      "documentation":"<p>Deletes a specific service association from an AgentSpace. This operation is idempotent and returns a 204 No Content response on success.</p>",
+      "idempotent":true
+    },
+    "EnableOperatorApp":{
+      "name":"EnableOperatorApp",
+      "http":{
+        "method":"POST",
+        "requestUri":"/v1/agentspaces/{agentSpaceId}/operator",
+        "responseCode":200
+      },
+      "input":{"shape":"EnableOperatorAppInput"},
+      "output":{"shape":"EnableOperatorAppOutput"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServerException"}
+      ],
+      "documentation":"<p>Enable the Operator App to access the given AgentSpace</p>"
+    },
+    "GetAgentSpace":{
+      "name":"GetAgentSpace",
+      "http":{
+        "method":"GET",
+        "requestUri":"/v1/agentspaces/{agentSpaceId}",
+        "responseCode":200
+      },
+      "input":{"shape":"GetAgentSpaceInput"},
+      "output":{"shape":"GetAgentSpaceOutput"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServerException"}
+      ],
+      "documentation":"<p>Retrieves detailed information about a specific AgentSpace.</p>",
+      "readonly":true
+    },
+    "GetAssociation":{
+      "name":"GetAssociation",
+      "http":{
+        "method":"GET",
+        "requestUri":"/v1/agentspaces/{agentSpaceId}/associations/{associationId}",
+        "responseCode":200
+      },
+      "input":{"shape":"GetAssociationInput"},
+      "output":{"shape":"GetAssociationOutput"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServerException"}
+      ],
+      "documentation":"<p>Retrieves given associations configured for a specific AgentSpace.</p>",
+      "readonly":true
+    },
+    "GetOperatorAppTeams":{
+      "name":"GetOperatorAppTeams",
+      "http":{
+        "method":"GET",
+        "requestUri":"/v1/agentspaces/{agentSpaceId}/operator",
+        "responseCode":200
+      },
+      "input":{"shape":"GetOperatorAppTeamsInput"},
+      "output":{"shape":"GetOperatorAppTeamsOutput"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServerException"}
+      ],
+      "documentation":"<p>Get the full auth configuration of operator including any enabled auth flow</p>",
+      "readonly":true
+    },
+
+    "GetService":{
+      "name":"GetService",
+      "http":{
+        "method":"GET",
+        "requestUri":"/v1/services/{serviceId}",
+        "responseCode":200
+      },
+      "input":{"shape":"GetServiceInput"},
+      "output":{"shape":"GetServiceOutput"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServerException"}
+      ],
+      "documentation":"<p>Retrieves given service by it's unique identifier</p>",
+      "readonly":true
+    },
+    "HandleServiceRegistrationCallback":{
+      "name":"HandleServiceRegistrationCallback",
+      "http":{
+        "method":"GET",
+        "requestUri":"/v1/register/{service}/callback",
+        "responseCode":302
+      },
+      "input":{"shape":"HandleServiceRegistrationCallbackInput"},
+      "output":{"shape":"HandleServiceRegistrationCallbackOutput"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"InternalServerException"}
+      ],
+      "documentation":"<p>Handle OAuth callback from external service. No authentication required as this is called by the external service</p>",
+      "readonly":true
+    },
+    "InitiateServiceRegistration":{
+      "name":"InitiateServiceRegistration",
+      "http":{
+        "method":"GET",
+        "requestUri":"/v1/register/{service}",
+        "responseCode":302
+      },
+      "input":{"shape":"InitiateServiceRegistrationInput"},
+      "output":{"shape":"InitiateServiceRegistrationOutput"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"InternalServerException"}
+      ],
+      "documentation":"<p>Initiate OAuth registration flow for a service. Requires IAM authentication to identify caller's AWS account</p>",
+      "readonly":true
+    },
+    "ListAgentSpaces":{
+      "name":"ListAgentSpaces",
+      "http":{
+        "method":"GET",
+        "requestUri":"/v1/agentspaces",
+        "responseCode":200
+      },
+      "input":{"shape":"ListAgentSpacesInput"},
+      "output":{"shape":"ListAgentSpacesOutput"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServerException"}
+      ],
+      "documentation":"<p>Lists all AgentSpaces with optional pagination.</p>",
+      "readonly":true
+    },
+    "ListAssociations":{
+      "name":"ListAssociations",
+      "http":{
+        "method":"GET",
+        "requestUri":"/v1/agentspaces/{agentSpaceId}/associations",
+        "responseCode":200
+      },
+      "input":{"shape":"ListAssociationsInput"},
+      "output":{"shape":"ListAssociationsOutput"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServerException"}
+      ],
+      "documentation":"<p>List all associations for given AgentSpace</p>",
+      "readonly":true
+    },
+    "ListServices":{
+      "name":"ListServices",
+      "http":{
+        "method":"GET",
+        "requestUri":"/v1/services",
+        "responseCode":200
+      },
+      "input":{"shape":"ListServicesInput"},
+      "output":{"shape":"ListServicesOutput"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServerException"}
+      ],
+      "documentation":"<p>List a list of registered service on the account level.</p>",
+      "readonly":true
+    },
+    "ListWebhooks":{
+      "name":"ListWebhooks",
+      "http":{
+        "method":"GET",
+        "requestUri":"/v1/agentspaces/{agentSpaceId}/associations/{associationId}/webhooks",
+        "responseCode":200
+      },
+      "input":{"shape":"ListWebhooksInput"},
+      "output":{"shape":"ListWebhooksOutput"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServerException"}
+      ],
+      "documentation":"<p>List all webhooks for given Association</p>",
+      "readonly":true
+    },
+    "RegisterService":{
+      "name":"RegisterService",
+      "http":{
+        "method":"POST",
+        "requestUri":"/v1/register/{service}",
+        "responseCode":201
+      },
+      "input":{"shape":"RegisterServiceInput"},
+      "output":{"shape":"RegisterServiceOutput"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"InvalidParameterException"},
+        {"shape":"InternalServerException"}
+      ],
+      "documentation":"<p>This operation registers the specified service</p>"
+    },
+    "SearchServiceAccessibleResource":{
+      "name":"SearchServiceAccessibleResource",
+      "http":{
+        "method":"POST",
+        "requestUri":"/v1/services/{serviceId}/resources",
+        "responseCode":200
+      },
+      "input":{"shape":"SearchServiceAccessibleResourceInput"},
+      "output":{"shape":"SearchServiceAccessibleResourceOutput"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServerException"}
+      ],
+      "documentation":"<p>Look up a registered service accessible resources</p>",
+      "readonly":true
+    },
+    "UpdateAgentSpace":{
+      "name":"UpdateAgentSpace",
+      "http":{
+        "method":"PUT",
+        "requestUri":"/v1/agentspaces/{agentSpaceId}",
+        "responseCode":200
+      },
+      "input":{"shape":"UpdateAgentSpaceInput"},
+      "output":{"shape":"UpdateAgentSpaceOutput"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"ConflictException"},
+        {"shape":"InternalServerException"}
+      ],
+      "documentation":"<p>Updates the information of an existing AgentSpace.</p>",
+      "idempotent":true
+    },
+    "UpdateAssociation":{
+      "name":"UpdateAssociation",
+      "http":{
+        "method":"PUT",
+        "requestUri":"/v1/agentspaces/{agentSpaceId}/associations/{associationId}",
+        "responseCode":200
+      },
+      "input":{"shape":"UpdateAssociationInput"},
+      "output":{"shape":"UpdateAssociationOutput"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServerException"}
+      ],
+      "documentation":"<p>Updates the configuration of an existing service association for an AgentSpace. Returns 200 OK on success.</p>",
+      "idempotent":true
+    },
+    "UpdateOperatorAppTeams":{
+      "name":"UpdateOperatorAppTeams",
+      "http":{
+        "method":"PUT",
+        "requestUri":"/v1/agentspaces/{agentSpaceId}/operator",
+        "responseCode":200
+      },
+      "input":{"shape":"UpdateOperatorAppTeamsInput"},
+      "output":{"shape":"UpdateOperatorAppTeamsOutput"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"InternalServerException"}
+      ],
+      "documentation":"<p>Update the list of teams that the Operator App is enabled for.</p>",
+      "idempotent":true
+    }
+  },
+  "shapes":{
+    "AWSConfiguration":{
+      "type":"structure",
+      "required":[
+        "assumableRoleArn",
+        "accountId",
+        "accountType"
+      ],
+      "members":{
+        "assumableRoleArn":{
+          "shape":"RoleArn",
+          "documentation":"<p>Role ARN to be assumed by AIDevOps to operate on behalf of customer.</p>"
+        },
+        "accountId":{
+          "shape":"AWSConfigurationAccountIdString",
+          "documentation":"<p>AWS Account Id corresponding to provided resources.</p>"
+        },
+        "accountType":{
+          "shape":"MonitorAccountType",
+          "documentation":"<p>Account Type 'monitor' for AIDevOps monitoring.</p>"
+        },
+        "resources":{"shape":"AWSResourceList"},
+        "tags":{"shape":"AWSTagList"}
+      },
+      "documentation":"<p>Configuration for AWS monitor account integration, allowing AIDevOps to monitor AWS resources.</p>"
+    },
+    "AWSConfigurationAccountIdString":{
+      "type":"string",
+      "pattern":".*\\d{12}.*"
+    },
+    "AWSResource":{
+      "type":"structure",
+      "required":["resourceArn"],
+      "members":{
+        "resourceType":{
+          "shape":"AWSResourceType",
+          "documentation":"<p>Resource type</p>"
+        },
+        "resourceArn":{
+          "shape":"AWSResourceResourceArnString",
+          "documentation":"<p>The Amazon Resource Name (ARN) of the resource</p>"
+        },
+        "resourceMetadata":{
+          "shape":"Document",
+          "documentation":"<p>Additional metadata for the resource</p>"
+        }
+      },
+      "documentation":"<p>Represents an AWS resource with its type, ARN, and optional metadata.</p>"
+    },
+    "AWSResourceList":{
+      "type":"list",
+      "member":{"shape":"AWSResource"},
+      "documentation":"<p>List of AWS resources.</p>"
+    },
+    "AWSResourceResourceArnString":{
+      "type":"string",
+      "pattern":"arn:.*"
+    },
+    "AWSResourceType":{
+      "type":"string",
+      "documentation":"<p>Supported AWS resource types for monitoring and integration.</p>",
+      "enum":[
+        "AWS::CloudFormation::Stack",
+        "AWS::ECR::Repository",
+        "AWS::S3::Bucket",
+        "AWS::S3::Object"
+      ]
+    },
+    "AWSTagList":{
+      "type":"list",
+      "member":{"shape":"KeyValuePair"},
+      "documentation":"<p>List of AWS tags as key-value pairs.</p>"
+    },
+    "AccessDeniedException":{
+      "type":"structure",
+      "required":["message"],
+      "members":{
+        "message":{
+          "shape":"String",
+          "documentation":"<p>Detailed error message describing why access was denied.</p>"
+        }
+      },
+      "documentation":"<p>Access to the requested resource is denied due to insufficient permissions.</p>",
+      "error":{
+        "httpStatusCode":403,
+        "senderFault":true
+      },
+      "exception":true
+    },
+    "AccessibleGitHubRepositoryOptions":{
+      "type":"structure",
+      "required":["pageSize"],
+      "members":{
+        "pageSize":{
+          "shape":"AccessibleGitHubRepositoryOptionsPageSizeInteger",
+          "documentation":"<p>The number of results to fetch per page.</p>",
+          "location":"uri",
+          "locationName":"pageSize"
+        },
+        "page":{
+          "shape":"AccessibleGitHubRepositoryOptionsPageInteger",
+          "documentation":"<p>The page number of the results to fetch.</p>",
+          "location":"uri",
+          "locationName":"page"
+        }
+      }
+    },
+    "AccessibleGitHubRepositoryOptionsPageInteger":{
+      "type":"integer",
+      "box":true,
+      "min":1
+    },
+    "AccessibleGitHubRepositoryOptionsPageSizeInteger":{
+      "type":"integer",
+      "box":true,
+      "max":100,
+      "min":1
+    },
+    "AccessibleGitHubRepositoryResources":{
+      "type":"structure",
+      "required":[
+        "repositories",
+        "hasNextPage"
+      ],
+      "members":{
+        "repositories":{
+          "shape":"GitHubRepositoryList",
+          "documentation":"<p>List of accessible GitHub repositories</p>"
+        },
+        "hasNextPage":{
+          "shape":"Boolean",
+          "documentation":"<p>Whether there is a next page of results</p>"
+        }
+      }
+    },
+    "AccessibleGitLabProjectOptions":{
+      "type":"structure",
+      "members":{
+        "pageSize":{
+          "shape":"AccessibleGitLabProjectOptionsPageSizeInteger",
+          "documentation":"<p>The number of results to fetch per page.</p>",
+          "location":"uri",
+          "locationName":"pageSize"
+        },
+        "page":{
+          "shape":"AccessibleGitLabProjectOptionsPageInteger",
+          "documentation":"<p>The page number of the results to fetch.</p>",
+          "location":"uri",
+          "locationName":"page"
+        }
+      }
+    },
+    "AccessibleGitLabProjectOptionsPageInteger":{
+      "type":"integer",
+      "box":true,
+      "min":1
+    },
+    "AccessibleGitLabProjectOptionsPageSizeInteger":{
+      "type":"integer",
+      "box":true,
+      "max":100,
+      "min":1
+    },
+    "AccessibleGitLabProjectResources":{
+      "type":"structure",
+      "required":[
+        "projects",
+        "hasNextPage"
+      ],
+      "members":{
+        "projects":{
+          "shape":"GitLabProjectList",
+          "documentation":"<p>List of accessible GitLab projects</p>"
+        },
+        "hasNextPage":{
+          "shape":"Boolean",
+          "documentation":"<p>Whether there is a next page of results</p>"
+        }
+      }
+    },
+    "AccessibleMcpServerToolOptions":{
+      "type":"structure",
+      "members":{
+        "cursor":{
+          "shape":"String",
+          "documentation":"<p>The cursor indicating page of results to fetch</p>",
+          "location":"uri",
+          "locationName":"cursor"
+        }
+      }
+    },
+    "AccessibleMcpServerToolResources":{
+      "type":"structure",
+      "required":["tools"],
+      "members":{
+        "tools":{
+          "shape":"McpServerToolList",
+          "documentation":"<p>List of accessible MCP Server tools</p>"
+        },
+        "cursor":{
+          "shape":"String",
+          "documentation":"<p>Cursor indicating next page of results</p>"
+        }
+      }
+    },
+    "AdditionalServiceDetails":{
+      "type":"structure",
+      "members":{
+        "github":{
+          "shape":"RegisteredGithubServiceDetails",
+          "documentation":"<p>GitHub-specific service details.</p>"
+        },
+        "slack":{
+          "shape":"RegisteredSlackServiceDetails",
+          "documentation":"<p>Slack-specific service details.</p>"
+        },
+        "mcpserverdatadog":{
+          "shape":"RegisteredMCPServerDetails",
+          "documentation":"<p>Datadog MCP server-specific service details.</p>"
+        },
+        "mcpserver":{
+          "shape":"RegisteredMCPServerDetails",
+          "documentation":"<p>MCP server-specific service details.</p>"
+        },
+        "servicenow":{
+          "shape":"RegisteredServiceNowDetails",
+          "documentation":"<p>ServiceNow-specific service details.</p>"
+        },
+        "gitlab":{
+          "shape":"RegisteredGitLabServiceDetails",
+          "documentation":"<p>GitLab-specific service details.</p>"
+        },
+        "mcpserversplunk":{
+          "shape":"RegisteredMCPServerDetails",
+          "documentation":"<p>Splunk MCP server-specific service details.</p>"
+        },
+        "mcpservernewrelic":{
+          "shape":"RegisteredNewRelicDetails",
+          "documentation":"<p>New Relic MCP server-specific service details.</p>"
+        }
+      },
+      "documentation":"<p>Union of service-specific details for different service types.</p>",
+      "union":true
+    },
+    "AdditionalServiceRegistrationStep":{
+      "type":"structure",
+      "members":{
+        "oauth":{
+          "shape":"OAuthAdditionalStepDetails",
+          "documentation":"<p>OAuth authorization step required.</p>"
+        }
+      },
+      "documentation":"<p>Additional steps required to complete service registration.</p>",
+      "union":true
+    },
+    "AgentSpace":{
+      "type":"structure",
+      "required":[
+        "name",
+        "createdAt",
+        "updatedAt",
+        "agentSpaceId"
+      ],
+      "members":{
+        "name":{
+          "shape":"AgentSpaceName",
+          "documentation":"<p>The name of the AgentSpace.</p>"
+        },
+        "description":{
+          "shape":"Description",
+          "documentation":"<p>The description of the AgentSpace.</p>"
+        },
+        "createdAt":{
+          "shape":"SyntheticTimestamp_date_time",
+          "documentation":"<p>The timestamp when the resource was created.</p>"
+        },
+        "updatedAt":{
+          "shape":"SyntheticTimestamp_date_time",
+          "documentation":"<p>The timestamp when the resource was last updated.</p>"
+        },
+        "encryptionKeyId":{
+          "shape":"AgentSpaceEncryptionKeyIdString",
+          "documentation":"<p>AWS-managed key for server-side encryption. If omitted, an AWS owned key will be used.</p>"
+        },
+        "agentSpaceId":{
+          "shape":"AgentSpaceId",
+          "documentation":"<p>The unique identifier of the AgentSpace</p>",
+          "location":"uri",
+          "locationName":"agentSpaceId"
+        }
+      },
+      "documentation":"<p>Represents a complete AgentSpace with all its properties, timestamps, encryption settings, and unique identifier.</p>"
+    },
+    "AgentSpaceEncryptionKeyIdString":{
+      "type":"string",
+      "pattern":"arn:aws[a-zA-Z-]*:kms:[a-z0-9-]+:[0-9]{12}:key/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}"
+    },
+    "AgentSpaceId":{
+      "type":"string",
+      "documentation":"<p>Unique identifier for an AgentSpace</p>",
+      "max":255,
+      "min":1,
+      "pattern":"[a-zA-Z0-9-]+"
+    },
+    "AgentSpaceList":{
+      "type":"list",
+      "member":{"shape":"AgentSpace"},
+      "documentation":"<p>A list of AgentSpace resources.</p>"
+    },
+    "AgentSpaceName":{
+      "type":"string",
+      "documentation":"<p>Agent space name field</p>",
+      "max":255,
+      "min":1,
+      "pattern":"[\\p{L}\\p{N}\\p{P}\\p{S}\\p{Z}]+"
+    },
+    "AssociateServiceInput":{
+      "type":"structure",
+      "required":[
+        "agentSpaceId",
+        "serviceId",
+        "configuration"
+      ],
+      "members":{
+        "agentSpaceId":{
+          "shape":"AgentSpaceId",
+          "documentation":"<p>The unique identifier of the AgentSpace</p>",
+          "location":"uri",
+          "locationName":"agentSpaceId"
+        },
+        "serviceId":{
+          "shape":"ServiceId",
+          "documentation":"<p>The unique identifier of the service.</p>"
+        },
+        "configuration":{
+          "shape":"ServiceConfiguration",
+          "documentation":"<p>The configuration that directs how AgentSpace interacts with the given service.</p>"
+        }
+      },
+      "documentation":"<p>Input for creating a new service association within an AgentSpace.</p>"
+    },
+    "AssociateServiceOutput":{
+      "type":"structure",
+      "required":["association"],
+      "members":{
+        "association":{"shape":"Association"},
+        "webhook":{
+          "shape":"GenericWebhook",
+          "documentation":"<p>Generic webhook configuration</p>"
+        }
+      },
+      "documentation":"<p>Output containing the newly created association and optional webhook configuration.</p>"
+    },
+    "Association":{
+      "type":"structure",
+      "required":[
+        "agentSpaceId",
+        "createdAt",
+        "updatedAt",
+        "associationId",
+        "serviceId",
+        "configuration"
+      ],
+      "members":{
+        "agentSpaceId":{
+          "shape":"AgentSpaceId",
+          "documentation":"<p>The unique identifier of the AgentSpace</p>",
+          "location":"uri",
+          "locationName":"agentSpaceId"
+        },
+        "createdAt":{
+          "shape":"SyntheticTimestamp_date_time",
+          "documentation":"<p>The timestamp when the resource was created.</p>"
+        },
+        "updatedAt":{
+          "shape":"SyntheticTimestamp_date_time",
+          "documentation":"<p>The timestamp when the resource was last updated.</p>"
+        },
+        "invalid":{
+          "shape":"Boolean",
+          "documentation":"<p>The invalidation status of the given association.</p>"
+        },
+        "invalidDate":{
+          "shape":"SyntheticTimestamp_date_time",
+          "documentation":"<p>The invalidation datetime of the given association.</p>"
+        },
+        "status":{
+          "shape":"ValidationStatus",
+          "documentation":"<p>Validation status</p>"
+        },
+        "associationId":{
+          "shape":"AssociationId",
+          "documentation":"<p>The unique identifier of the given association.</p>"
+        },
+        "serviceId":{
+          "shape":"ServiceId",
+          "documentation":"<p>The identifier for associated service</p>"
+        },
+        "configuration":{
+          "shape":"ServiceConfiguration",
+          "documentation":"<p>The configuration that directs how AgentSpace interacts with the given service.</p>"
+        },
+        "linkedAssociationIds":{
+          "shape":"LinkedAssociations",
+          "documentation":"<p>Linked Association IDs</p>"
+        }
+      },
+      "documentation":"<p>Represents a service association within an AgentSpace, defining how the agent interacts with external services.</p>"
+    },
+    "AssociationId":{
+      "type":"string",
+      "documentation":"<p>Unique identifier for a service association within an AgentSpace</p>",
+      "max":255,
+      "min":1,
+      "pattern":"[a-zA-Z0-9-]+"
+    },
+    "AssociationsList":{
+      "type":"list",
+      "member":{"shape":"Association"},
+      "documentation":"<p>A list of service associations.</p>"
+    },
+    "AuthFlow":{
+      "type":"string",
+      "documentation":"<p>Authentication flow type for operator app.</p>",
+      "enum":[
+        "iam",
+        "idc"
+      ]
+    },
+    "Boolean":{
+      "type":"boolean",
+      "box":true
+    },
+    "CfnStackArns":{
+      "type":"list",
+      "member":{"shape":"String"},
+      "documentation":"<p>List of CloudFormation stack ARNs associated with a pipeline.</p>"
+    },
+    "ClientId":{
+      "type":"string",
+      "documentation":"<p>Client ID for service authentication.</p>",
+      "max":255,
+      "min":1,
+      "pattern":"[a-zA-Z0-9._-]+",
+      "sensitive":true
+    },
+    "ClientSecret":{
+      "type":"string",
+      "documentation":"<p>Client secret for service authentication.</p>",
+      "max":512,
+      "min":1,
+      "pattern":"[\\S]+",
+      "sensitive":true
+    },
+    "ConflictException":{
+      "type":"structure",
+      "required":["message"],
+      "members":{
+        "message":{
+          "shape":"String",
+          "documentation":"<p>Detailed error message describing the conflict.</p>"
+        }
+      },
+      "documentation":"<p>The request conflicts with the current state of the resource.</p>",
+      "error":{
+        "httpStatusCode":409,
+        "senderFault":true
+      },
+      "exception":true
+    },
+    "CreateAgentSpaceInput":{
+      "type":"structure",
+      "required":["name"],
+      "members":{
+        "name":{
+          "shape":"AgentSpaceName",
+          "documentation":"<p>The name of the AgentSpace.</p>"
+        },
+        "description":{
+          "shape":"Description",
+          "documentation":"<p>The description of the AgentSpace.</p>"
+        },
+        "encryptionKeyId":{
+          "shape":"CreateAgentSpaceInputEncryptionKeyIdString",
+          "documentation":"<p>AWS-managed key for server-side encryption. If omitted, an AWS owned key will be used.</p>"
+        },
+        "clientToken":{
+          "shape":"CreateAgentSpaceInputClientTokenString",
+          "documentation":"<p>Client-provided token to ensure request idempotency. When the same token is provided in subsequent calls, the same response is returned within a 8-hour window.</p>",
+          "idempotencyToken":true
+        }
+      },
+      "documentation":"<p>Input for creating a new AgentSpace.</p>"
+    },
+    "CreateAgentSpaceInputClientTokenString":{
+      "type":"string",
+      "max":64,
+      "min":0,
+      "pattern":"[!-~]+"
+    },
+    "CreateAgentSpaceInputEncryptionKeyIdString":{
+      "type":"string",
+      "pattern":"arn:aws[a-zA-Z-]*:kms:[a-z0-9-]+:[0-9]{12}:key/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}"
+    },
+    "CreateAgentSpaceOutput":{
+      "type":"structure",
+      "required":["agentSpace"],
+      "members":{
+        "agentSpace":{"shape":"AgentSpace"}
+      },
+      "documentation":"<p>Output containing the newly created AgentSpace.</p>"
+    },
+    "CreateOneTimeLoginSessionInput":{
+      "type":"structure",
+      "required":[
+        "agentSpaceId",
+        "authFlow"
+      ],
+      "members":{
+        "agentSpaceId":{
+          "shape":"AgentSpaceId",
+          "documentation":"<p>The unique identifier of the AgentSpace</p>",
+          "location":"uri",
+          "locationName":"agentSpaceId"
+        },
+        "authFlow":{
+          "shape":"String",
+          "documentation":"<p>The authentication flow configured for the operator App. 'iam' is the only supported value</p>"
+        }
+      },
+      "documentation":"<p>Input for creating a one-time login session for the Operator App.</p>"
+    },
+    "CreateOneTimeLoginSessionOutput":{
+      "type":"structure",
+      "required":[
+        "sessionToken",
+        "sessionUrl"
+      ],
+      "members":{
+        "sessionToken":{
+          "shape":"SessionToken",
+          "documentation":"<p>Signed JWT for initiating login with off-console Application.</p>"
+        },
+        "sessionUrl":{
+          "shape":"String",
+          "documentation":"<p>API endpoint to initiate login with off-console Application.</p>"
+        }
+      },
+      "documentation":"<p>Output containing the session token and URL for one-time login.</p>"
+    },
+    "DatadogAuthorizationConfig":{
+      "type":"structure",
+      "members":{
+        "authorizationDiscovery":{
+          "shape":"MCPServerAuthorizationDiscoveryConfig",
+          "documentation":"<p>Datadog MCP server authorization discovery configuration.</p>"
+        }
+      },
+      "documentation":"<p>Authorization configuration for Datadog MCP server (uses authorization discovery only).</p>",
+      "union":true
+    },
+    "DatadogServiceDetails":{
+      "type":"structure",
+      "required":[
+        "name",
+        "endpoint",
+        "authorizationConfig"
+      ],
+      "members":{
+        "name":{
+          "shape":"DatadogServiceDetailsNameString",
+          "documentation":"<p>MCP server name.</p>"
+        },
+        "endpoint":{
+          "shape":"DatadogServiceDetailsEndpointString",
+          "documentation":"<p>MCP server endpoint URL.</p>"
+        },
+        "description":{
+          "shape":"DatadogServiceDetailsDescriptionString",
+          "documentation":"<p>Optional description for the MCP server.</p>"
+        },
+        "authorizationConfig":{
+          "shape":"DatadogAuthorizationConfig",
+          "documentation":"<p>Datadog MCP server authorization configuration (only authorization discovery is supported).</p>"
+        }
+      },
+      "documentation":"<p>Complete service details for Datadog MCP server integration.</p>"
+    },
+    "DatadogServiceDetailsDescriptionString":{
+      "type":"string",
+      "documentation":"<p>Description field</p>",
+      "max":500,
+      "min":0,
+      "pattern":"[\\p{L}\\p{N}\\p{P}\\p{S}\\p{Z}]+",
+      "sensitive":true
+    },
+    "DatadogServiceDetailsEndpointString":{
+      "type":"string",
+      "pattern":"https://[a-zA-Z0-9.-]+(?::[0-9]+)?(?:/.*)?"
+    },
+    "DatadogServiceDetailsNameString":{
+      "type":"string",
+      "pattern":"[a-zA-Z0-9_-]+"
+    },
+    "DeleteAgentSpaceInput":{
+      "type":"structure",
+      "required":["agentSpaceId"],
+      "members":{
+        "agentSpaceId":{
+          "shape":"AgentSpaceId",
+          "documentation":"<p>The unique identifier of the AgentSpace</p>",
+          "location":"uri",
+          "locationName":"agentSpaceId"
+        }
+      },
+      "documentation":"<p>Input for deleting an AgentSpace.</p>"
+    },
+    "DeleteAgentSpaceOutput":{
+      "type":"structure",
+      "members":{},
+      "documentation":"<p>Empty output for successful AgentSpace deletion.</p>"
+    },
+    "DeregisterServiceInput":{
+      "type":"structure",
+      "required":["serviceId"],
+      "members":{
+        "serviceId":{
+          "shape":"ServiceId",
+          "documentation":"<p>The service id to deregister. A service can only be deregistered if it is not associated with any AgentSpace.</p>",
+          "location":"uri",
+          "locationName":"serviceId"
+        }
+      },
+      "documentation":"<p>Input for deregistering a service.</p>"
+    },
+    "DeregisterServiceOutput":{
+      "type":"structure",
+      "members":{},
+      "documentation":"<p>Empty output for successful service deregistration.</p>"
+    },
+    "Description":{
+      "type":"string",
+      "documentation":"<p>Description field</p>",
+      "max":1000,
+      "min":1,
+      "pattern":"[\\p{L}\\p{N}\\p{P}\\p{S}\\p{Z}]+",
+      "sensitive":true
+    },
+    "DisableOperatorAppInput":{
+      "type":"structure",
+      "required":["agentSpaceId"],
+      "members":{
+        "agentSpaceId":{
+          "shape":"AgentSpaceId",
+          "documentation":"<p>The unique identifier of the AgentSpace</p>",
+          "location":"uri",
+          "locationName":"agentSpaceId"
+        },
+        "authFlow":{
+          "shape":"String",
+          "documentation":"<p>The authentication flow configured for the operator App. </p>",
+          "location":"header",
+          "locationName":"x-amzn-app-auth-flow"
+        }
+      },
+      "documentation":"<p>Input for disabling the Operator App for an AgentSpace.</p>"
+    },
+    "DisassociateServiceInput":{
+      "type":"structure",
+      "required":[
+        "agentSpaceId",
+        "associationId"
+      ],
+      "members":{
+        "agentSpaceId":{
+          "shape":"AgentSpaceId",
+          "documentation":"<p>The unique identifier of the AgentSpace</p>",
+          "location":"uri",
+          "locationName":"agentSpaceId"
+        },
+        "associationId":{
+          "shape":"AssociationId",
+          "documentation":"<p>The unique identifier of the given association.</p>",
+          "location":"uri",
+          "locationName":"associationId"
+        }
+      },
+      "documentation":"<p>Input for removing a service association from an AgentSpace.</p>"
+    },
+    "DisassociateServiceOutput":{
+      "type":"structure",
+      "members":{},
+      "documentation":"<p>Empty output for successful service disassociation.</p>"
+    },
+    "Document":{
+      "type":"structure",
+      "members":{},
+      "document":true
+    },
+    "DocumentList":{
+      "type":"list",
+      "member":{"shape":"Document"},
+      "documentation":"<p>Generic list of document objects for flexible data structures.</p>"
+    },
+    "DynatraceConfiguration":{
+      "type":"structure",
+      "required":["envId"],
+      "members":{
+        "envId":{
+          "shape":"String",
+          "documentation":"<p>Dynatrace environment id</p>"
+        },
+        "resources":{
+          "shape":"DynatraceResourceList",
+          "documentation":"<p>List of Dynatrace resources to monitor</p>"
+        },
+        "shouldUpdateWebhook":{
+          "shape":"Boolean",
+          "documentation":"<p>Should the webhook be updated</p>"
+        }
+      },
+      "documentation":"<p>Configuration for Dynatrace monitoring integration.</p>"
+    },
+    "DynatraceOAuthClientCredentialsConfig":{
+      "type":"structure",
+      "required":[
+        "clientId",
+        "clientSecret"
+      ],
+      "members":{
+        "clientName":{
+          "shape":"DynatraceOAuthClientCredentialsConfigClientNameString",
+          "documentation":"<p>User friendly OAuth client name specified by end user.</p>"
+        },
+        "clientId":{
+          "shape":"ClientId",
+          "documentation":"<p>OAuth client ID for authenticating with the service.</p>"
+        },
+        "exchangeParameters":{
+          "shape":"Document",
+          "documentation":"<p>OAuth token exchange parameters for authenticating with the service.</p>"
+        },
+        "clientSecret":{
+          "shape":"ClientSecret",
+          "documentation":"<p>OAuth client secret for authenticating with the service.</p>"
+        }
+      },
+      "documentation":"<p>OAuth client credentials configuration for Dynatrace.</p>"
+    },
+    "DynatraceOAuthClientCredentialsConfigClientNameString":{
+      "type":"string",
+      "max":100,
+      "min":1,
+      "pattern":"[\\p{L}\\p{N}\\p{Z}._-]+"
+    },
+    "DynatraceResourceList":{
+      "type":"list",
+      "member":{"shape":"String"},
+      "documentation":"<p>List of Dynatrace resources to monitor.</p>"
+    },
+    "DynatraceServiceAuthorizationConfig":{
+      "type":"structure",
+      "members":{
+        "oAuthClientCredentials":{
+          "shape":"DynatraceOAuthClientCredentialsConfig",
+          "documentation":"<p>OAuth client credentials configuration.</p>"
+        }
+      },
+      "documentation":"<p>Authorization configuration options for Dynatrace service.</p>",
+      "union":true
+    },
+    "DynatraceServiceDetails":{
+      "type":"structure",
+      "required":["accountUrn"],
+      "members":{
+        "accountUrn":{
+          "shape":"DynatraceServiceDetailsAccountUrnString",
+          "documentation":"<p>Dynatrace resource account urn.</p>"
+        },
+        "authorizationConfig":{
+          "shape":"DynatraceServiceAuthorizationConfig",
+          "documentation":"<p>Dynatrace OAuth client credentials configuration. Use this when registering with OAuth client credentials flow.</p>"
+        }
+      },
+      "documentation":"<p>Complete service details for Dynatrace integration.</p>"
+    },
+    "DynatraceServiceDetailsAccountUrnString":{
+      "type":"string",
+      "max":255,
+      "min":1,
+      "pattern":"urn:dtaccount:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+    },
+    "EnableOperatorAppInput":{
+      "type":"structure",
+      "required":[
+        "agentSpaceId",
+        "authFlow",
+        "operatorAppRoleArn"
+      ],
+      "members":{
+        "agentSpaceId":{
+          "shape":"AgentSpaceId",
+          "documentation":"<p>The unique identifier of the AgentSpace</p>",
+          "location":"uri",
+          "locationName":"agentSpaceId"
+        },
+        "authFlow":{
+          "shape":"AuthFlow",
+          "documentation":"<p>The authentication flow configured for the operator App. e.g. iam</p>"
+        },
+        "operatorAppRoleArn":{
+          "shape":"RoleArn",
+          "documentation":"<p>The IAM role end users assume to access AIDevOps APIs</p>"
+        },
+        "idcInstanceArn":{
+          "shape":"String",
+          "documentation":"<p>The IdC instance Arn used to create an IdC auth application</p>"
+        }
+      },
+      "documentation":"<p>Input for enabling the Operator App for an AgentSpace.</p>"
+    },
+    "EnableOperatorAppOutput":{
+      "type":"structure",
+      "required":[
+        "agentSpaceId",
+        "createdAt",
+        "teams",
+        "authFlow",
+        "operatorAppRoleArn"
+      ],
+      "members":{
+        "agentSpaceId":{
+          "shape":"AgentSpaceId",
+          "documentation":"<p>The unique identifier of the AgentSpace</p>",
+          "location":"uri",
+          "locationName":"agentSpaceId"
+        },
+        "createdAt":{
+          "shape":"SyntheticTimestamp_date_time",
+          "documentation":"<p>The timestamp when the Operator App was enabled.</p>",
+          "deprecated":true,
+          "deprecatedMessage":"To be replaced"
+        },
+        "updatedAt":{
+          "shape":"SyntheticTimestamp_date_time",
+          "documentation":"<p>The timestamp when the Operator App was updated.</p>",
+          "deprecated":true,
+          "deprecatedMessage":"To be replaced"
+        },
+        "teams":{
+          "shape":"TeamList",
+          "documentation":"<p>The list of teams that the Operator App is enabled for.</p>",
+          "deprecated":true,
+          "deprecatedMessage":"To be replaced"
+        },
+        "authFlow":{
+          "shape":"String",
+          "documentation":"<p>The authentication flow configured for the operator App.</p>",
+          "deprecated":true,
+          "deprecatedMessage":"To be replaced"
+        },
+        "operatorAppRoleArn":{
+          "shape":"String",
+          "documentation":"<p>The IAM role end users assume to access AIDevOps APIs</p>",
+          "deprecated":true,
+          "deprecatedMessage":"To be replaced"
+        },
+        "iam":{
+          "shape":"IamAuthConfiguration",
+          "documentation":"<p>Configuration authorizing the OperatorApp with existing IAM session</p>"
+        },
+        "idc":{
+          "shape":"IdcAuthConfiguration",
+          "documentation":"<p>Configuration authorizing the OperatorApp with AWS Identity Center (IdC)</p>"
+        }
+      },
+      "documentation":"<p>Output containing the enabled Operator App configuration.</p>"
+    },
+    "EventChannelConfiguration":{
+      "type":"structure",
+      "members":{
+        "shouldUpdateWebhook":{
+          "shape":"Boolean",
+          "documentation":"<p>Should the webhook be updated</p>"
+        }
+      },
+      "documentation":"<p>Configuration for Event Channel integration.</p>"
+    },
+    "EventChannelDetails":{
+      "type":"structure",
+      "members":{
+        "type":{
+          "shape":"EventChannelType",
+          "documentation":"<p>The type of event channel</p>"
+        }
+      },
+      "documentation":"<p>Service details for Event Channel integration.</p>"
+    },
+    "EventChannelType":{
+      "type":"string",
+      "documentation":"<p>Event Channel type</p>",
+      "enum":["webhook"]
+    },
+    "GenericWebhook":{
+      "type":"structure",
+      "members":{
+        "webhookUrl":{
+          "shape":"String",
+          "documentation":"<p>The webhook URL endpoint</p>"
+        },
+        "webhookId":{
+          "shape":"String",
+          "documentation":"<p>The unique webhook identifier</p>"
+        },
+        "webhookSecret":{
+          "shape":"WebhookSecret",
+          "documentation":"<p>The webhook secret for authentication</p>"
+        },
+        "apiKey":{
+          "shape":"String",
+          "documentation":"<p>API Key for API Key webhook authentication</p>"
+        }
+      },
+      "documentation":"<p>Generic webhook configuration for services that support webhook notifications.</p>"
+    },
+    "GetAgentSpaceInput":{
+      "type":"structure",
+      "required":["agentSpaceId"],
+      "members":{
+        "agentSpaceId":{
+          "shape":"AgentSpaceId",
+          "documentation":"<p>The unique identifier of the AgentSpace</p>",
+          "location":"uri",
+          "locationName":"agentSpaceId"
+        }
+      },
+      "documentation":"<p>Input for retrieving a specific AgentSpace by ID.</p>"
+    },
+    "GetAgentSpaceOutput":{
+      "type":"structure",
+      "required":["agentSpace"],
+      "members":{
+        "agentSpace":{"shape":"AgentSpace"}
+      },
+      "documentation":"<p>Output containing the requested AgentSpace details.</p>"
+    },
+    "GetAssociationInput":{
+      "type":"structure",
+      "required":[
+        "agentSpaceId",
+        "associationId"
+      ],
+      "members":{
+        "agentSpaceId":{
+          "shape":"AgentSpaceId",
+          "documentation":"<p>The unique identifier of the AgentSpace</p>",
+          "location":"uri",
+          "locationName":"agentSpaceId"
+        },
+        "associationId":{
+          "shape":"AssociationId",
+          "documentation":"<p>The unique identifier of the given association.</p>",
+          "location":"uri",
+          "locationName":"associationId"
+        }
+      },
+      "documentation":"<p>Input for retrieving a specific service association.</p>"
+    },
+    "GetAssociationOutput":{
+      "type":"structure",
+      "required":["association"],
+      "members":{
+        "association":{"shape":"Association"}
+      },
+      "documentation":"<p>Output containing the requested association details.</p>"
+    },
+    "GetOperatorAppTeamsInput":{
+      "type":"structure",
+      "required":["agentSpaceId"],
+      "members":{
+        "agentSpaceId":{
+          "shape":"AgentSpaceId",
+          "documentation":"<p>The unique identifier of the AgentSpace</p>",
+          "location":"uri",
+          "locationName":"agentSpaceId"
+        }
+      },
+      "documentation":"<p>Input for retrieving Operator App configuration.</p>"
+    },
+    "GetOperatorAppTeamsOutput":{
+      "type":"structure",
+      "required":[
+        "agentSpaceId",
+        "createdAt",
+        "teams",
+        "authFlow",
+        "operatorAppRoleArn"
+      ],
+      "members":{
+        "agentSpaceId":{
+          "shape":"AgentSpaceId",
+          "documentation":"<p>The unique identifier of the AgentSpace</p>",
+          "location":"uri",
+          "locationName":"agentSpaceId"
+        },
+        "createdAt":{
+          "shape":"SyntheticTimestamp_date_time",
+          "documentation":"<p>The timestamp when the Operator App was enabled.</p>",
+          "deprecated":true,
+          "deprecatedMessage":"To be replaced"
+        },
+        "updatedAt":{
+          "shape":"SyntheticTimestamp_date_time",
+          "documentation":"<p>The timestamp when the Operator App was updated.</p>",
+          "deprecated":true,
+          "deprecatedMessage":"To be replaced"
+        },
+        "teams":{
+          "shape":"TeamList",
+          "documentation":"<p>The list of teams that the Operator App is enabled for.</p>",
+          "deprecated":true,
+          "deprecatedMessage":"To be replaced"
+        },
+        "authFlow":{
+          "shape":"String",
+          "documentation":"<p>The authentication flow configured for the operator App. </p>",
+          "deprecated":true,
+          "deprecatedMessage":"To be replaced"
+        },
+        "operatorAppRoleArn":{
+          "shape":"String",
+          "documentation":"<p>The IAM role end users assume to access AIDevOps APIs</p>",
+          "deprecated":true,
+          "deprecatedMessage":"To be replaced"
+        },
+        "iam":{
+          "shape":"IamAuthConfiguration",
+          "documentation":"<p>Configuration authorizing the OperatorApp with existing IAM session</p>"
+        },
+        "idc":{
+          "shape":"IdcAuthConfiguration",
+          "documentation":"<p>Configuration authorizing the OperatorApp with AWS Identity Center (IdC)</p>"
+        }
+      },
+      "documentation":"<p>Output containing the Operator App configuration including teams and authentication details.</p>"
+    },
+    "GetServiceInput":{
+      "type":"structure",
+      "required":["serviceId"],
+      "members":{
+        "serviceId":{
+          "shape":"ServiceId",
+          "documentation":"<p>The unique identifier of the given service.</p>",
+          "location":"uri",
+          "locationName":"serviceId"
+        }
+      },
+      "documentation":"<p>Input for retrieving a specific service association.</p>"
+    },
+    "GetServiceOutput":{
+      "type":"structure",
+      "required":["service"],
+      "members":{
+        "service":{"shape":"RegisteredService"}
+      },
+      "documentation":"<p>Output containing the requested service details.</p>"
+    },
+
+    "GitHubConfiguration":{
+      "type":"structure",
+      "required":[
+        "repoName",
+        "repoId",
+        "owner",
+        "ownerType"
+      ],
+      "members":{
+        "repoName":{
+          "shape":"String",
+          "documentation":"<p>Associated Github repo name</p>"
+        },
+        "repoId":{
+          "shape":"String",
+          "documentation":"<p>Associated Github repo ID</p>"
+        },
+        "owner":{"shape":"String"},
+        "ownerType":{"shape":"GithubRepoOwnerType"}
+      },
+      "documentation":"<p>Configuration for GitHub repository integration.</p>"
+    },
+    "GitHubRepository":{
+      "type":"structure",
+      "required":[
+        "id",
+        "name",
+        "fullName"
+      ],
+      "members":{
+        "id":{
+          "shape":"Integer",
+          "documentation":"<p>Repository ID</p>"
+        },
+        "name":{
+          "shape":"String",
+          "documentation":"<p>Repository name</p>"
+        },
+        "fullName":{
+          "shape":"String",
+          "documentation":"<p>Repository full name</p>"
+        }
+      }
+    },
+    "GitHubRepositoryList":{
+      "type":"list",
+      "member":{"shape":"GitHubRepository"}
+    },
+    "GitHubSetupAction":{
+      "type":"string",
+      "documentation":"<p>GitHub App setup actions.</p>",
+      "enum":[
+        "install",
+        "update"
+      ]
+    },
+    "GitLabConfiguration":{
+      "type":"structure",
+      "required":[
+        "projectId",
+        "projectPath"
+      ],
+      "members":{
+        "projectId":{
+          "shape":"String",
+          "documentation":"<p>GitLab numeric project ID.</p>"
+        },
+        "projectPath":{
+          "shape":"String",
+          "documentation":"<p>Full GitLab project path (e.g., namespace/project-name).</p>"
+        },
+        "instanceIdentifier":{
+          "shape":"String",
+          "documentation":"<p>GitLab instance identifier (e.g., gitlab.com or e2e.gamma.dev.us-east-1.gitlab.falco.ai.aws.dev)</p>"
+        },
+        "shouldUpdateWebhook":{
+          "shape":"Boolean",
+          "documentation":"<p>Should the webhook be updated</p>"
+        }
+      },
+      "documentation":"<p>Configuration for GitLab project integration.</p>"
+    },
+    "GitLabDetails":{
+      "type":"structure",
+      "required":[
+        "targetUrl",
+        "tokenType",
+        "tokenValue"
+      ],
+      "members":{
+        "targetUrl":{
+          "shape":"GitLabDetailsTargetUrlString",
+          "documentation":"<p>GitLab instance URL (e.g., https://gitlab.com or self-hosted instance).</p>"
+        },
+        "tokenType":{
+          "shape":"GitLabTokenType",
+          "documentation":"<p>Type of GitLab access token</p>"
+        },
+        "tokenValue":{
+          "shape":"GitLabDetailsTokenValueString",
+          "documentation":"<p>GitLab access token value</p>"
+        },
+        "groupId":{
+          "shape":"String",
+          "documentation":"<p>Optional GitLab group ID for group-level access tokens</p>"
+        }
+      },
+      "documentation":"<p>Service details for GitLab integration.</p>"
+    },
+    "GitLabDetailsTargetUrlString":{
+      "type":"string",
+      "pattern":"https://[a-zA-Z0-9]([a-zA-Z0-9.-]*[a-zA-Z0-9])?(?::[0-9]{1,5})?/?"
+    },
+    "GitLabDetailsTokenValueString":{
+      "type":"string",
+      "documentation":"<p>Token value for authentication.</p>",
+      "pattern":"glpat-[a-zA-Z0-9._-]+",
+      "sensitive":true
+    },
+    "GitLabProject":{
+      "type":"structure",
+      "required":[
+        "id",
+        "name",
+        "fullName",
+        "url"
+      ],
+      "members":{
+        "id":{
+          "shape":"String",
+          "documentation":"<p>The unique identifier of the GitLab project</p>"
+        },
+        "name":{
+          "shape":"String",
+          "documentation":"<p>The name of the GitLab project</p>"
+        },
+        "fullName":{
+          "shape":"String",
+          "documentation":"<p>The full name of the GitLab project including namespace</p>"
+        },
+        "description":{
+          "shape":"String",
+          "documentation":"<p>The description of the GitLab project</p>"
+        },
+        "url":{
+          "shape":"String",
+          "documentation":"<p>The URL of the GitLab project</p>"
+        }
+      }
+    },
+    "GitLabProjectList":{
+      "type":"list",
+      "member":{"shape":"GitLabProject"}
+    },
+    "GitLabTokenType":{
+      "type":"string",
+      "documentation":"<p>Type of GitLab access token.</p>",
+      "enum":[
+        "personal",
+        "group"
+      ]
+    },
+    "GithubRepoOwnerType":{
+      "type":"string",
+      "documentation":"<p>Type of GitHub repository owner.</p>",
+      "enum":[
+        "organization",
+        "user"
+      ]
+    },
+    "HandleServiceRegistrationCallbackInput":{
+      "type":"structure",
+      "required":["service"],
+      "members":{
+        "service":{
+          "shape":"HandleServiceRegistrationCallbackSupportedOAuth3LOService",
+          "documentation":"<p>The service to register with (e.g., 'github', 'slack')</p>",
+          "location":"uri",
+          "locationName":"service"
+        },
+        "sessionCookie":{
+          "shape":"HandleServiceRegistrationCallbackInputSessionCookieString",
+          "documentation":"<p>Session cookie for OAuth flow tracking</p>",
+          "location":"header",
+          "locationName":"Cookie"
+        },
+        "installationId":{
+          "shape":"HandleServiceRegistrationCallbackInputInstallationIdString",
+          "documentation":"<p>GitHub App installation ID (GitHub only)</p>",
+          "location":"querystring",
+          "locationName":"installation_id"
+        },
+        "setupAction":{
+          "shape":"GitHubSetupAction",
+          "documentation":"<p>GitHub App setup action (GitHub only)</p>",
+          "location":"querystring",
+          "locationName":"setup_action"
+        },
+        "code":{
+          "shape":"HandleServiceRegistrationCallbackInputCodeString",
+          "documentation":"<p>Authorization code from OAuth provider</p>",
+          "location":"querystring",
+          "locationName":"code"
+        },
+        "state":{
+          "shape":"HandleServiceRegistrationCallbackInputStateString",
+          "documentation":"<p>State parameter for CSRF protection</p>",
+          "location":"querystring",
+          "locationName":"state"
+        },
+        "error":{
+          "shape":"HandleServiceRegistrationCallbackInputErrorString",
+          "documentation":"<p>Error code if OAuth authorization failed</p>",
+          "location":"querystring",
+          "locationName":"error"
+        },
+        "errorDescription":{
+          "shape":"HandleServiceRegistrationCallbackInputErrorDescriptionString",
+          "documentation":"<p>Human-readable error description</p>",
+          "location":"querystring",
+          "locationName":"error_description"
+        }
+      },
+      "documentation":"<p>Input for handling OAuth callback from external service.</p>"
+    },
+    "HandleServiceRegistrationCallbackInputCodeString":{
+      "type":"string",
+      "max":512,
+      "min":1,
+      "pattern":"[\\S]+"
+    },
+    "HandleServiceRegistrationCallbackInputErrorDescriptionString":{
+      "type":"string",
+      "max":1000,
+      "min":1
+    },
+    "HandleServiceRegistrationCallbackInputErrorString":{
+      "type":"string",
+      "max":100,
+      "min":1,
+      "pattern":"[a-zA-Z0-9_-]+"
+    },
+    "HandleServiceRegistrationCallbackInputInstallationIdString":{
+      "type":"string",
+      "max":20,
+      "min":1,
+      "pattern":"[0-9]+"
+    },
+    "HandleServiceRegistrationCallbackInputSessionCookieString":{
+      "type":"string",
+      "max":4096,
+      "min":1
+    },
+    "HandleServiceRegistrationCallbackInputStateString":{
+      "type":"string",
+      "max":256,
+      "min":1,
+      "pattern":"[a-zA-Z0-9+/=._:?&%-]+"
+    },
+    "HandleServiceRegistrationCallbackOutput":{
+      "type":"structure",
+      "members":{
+        "redirectTo":{
+          "shape":"String",
+          "documentation":"<p>URL to redirect user after processing callback</p>",
+          "location":"header",
+          "locationName":"Location"
+        },
+        "sessionCookie":{
+          "shape":"String",
+          "documentation":"<p>Session cookie for OAuth flow tracking</p>",
+          "location":"header",
+          "locationName":"Set-Cookie"
+        }
+      },
+      "documentation":"<p>Output containing redirect URL after processing OAuth callback.</p>"
+    },
+    "HandleServiceRegistrationCallbackSupportedOAuth3LOService":{
+      "type":"string",
+      "documentation":"<p>Services supported for handling OAuth callback.</p>",
+      "enum":[
+        "github",
+        "slack",
+        "mcpserverdatadog",
+        "mcpserver"
+      ]
+    },
+    "IamAuthConfiguration":{
+      "type":"structure",
+      "required":[
+        "operatorAppRoleArn",
+        "createdAt"
+      ],
+      "members":{
+        "operatorAppRoleArn":{
+          "shape":"String",
+          "documentation":"<p>The IAM role end users assume to access AIDevOps APIs</p>"
+        },
+        "createdAt":{
+          "shape":"SyntheticTimestamp_date_time",
+          "documentation":"<p>The timestamp when the Operator App IAM auth flow was enabled.</p>"
+        },
+        "updatedAt":{
+          "shape":"SyntheticTimestamp_date_time",
+          "documentation":"<p>The timestamp when the Operator App IAM auth flow was updated.</p>"
+        }
+      },
+      "documentation":"<p>Configuration for IAM-based authentication flow for the Operator App.</p>"
+    },
+    "IdcAuthConfiguration":{
+      "type":"structure",
+      "required":[
+        "operatorAppRoleArn",
+        "idcInstanceArn",
+        "createdAt"
+      ],
+      "members":{
+        "operatorAppRoleArn":{
+          "shape":"String",
+          "documentation":"<p>The IAM role end users assume to access AIDevOps APIs</p>"
+        },
+        "idcInstanceArn":{
+          "shape":"String",
+          "documentation":"<p>The IdC instance Arn used to create an IdC auth application</p>"
+        },
+        "idcApplicationArn":{
+          "shape":"String",
+          "documentation":"<p>The IdC application Arn created for IdC auth</p>"
+        },
+        "createdAt":{
+          "shape":"SyntheticTimestamp_date_time",
+          "documentation":"<p>The timestamp when the Operator App IdC auth flow was enabled.</p>"
+        },
+        "updatedAt":{
+          "shape":"SyntheticTimestamp_date_time",
+          "documentation":"<p>The timestamp when the Operator App IdC auth flow was updated.</p>"
+        }
+      }
+    },
+    "InitiateServiceRegistrationInput":{
+      "type":"structure",
+      "required":[
+        "service",
+        "returnToEndpoint"
+      ],
+      "members":{
+        "service":{
+          "shape":"InitiateServiceRegistrationSupportedOAuth3LOService",
+          "documentation":"<p>The service to register with (e.g., 'github', 'slack')</p>",
+          "location":"uri",
+          "locationName":"service"
+        },
+        "returnToEndpoint":{
+          "shape":"InitiateServiceRegistrationInputReturnToEndpointString",
+          "documentation":"<p>The endpoint to return to after OAuth flow completes (must be AWS console domain)</p>",
+          "location":"querystring",
+          "locationName":"returnToEndpoint"
+        },
+        "githubOrgName":{
+          "shape":"InitiateServiceRegistrationInputGithubOrgNameString",
+          "documentation":"<p>GitHub organization name (GitHub only)</p>",
+          "location":"querystring",
+          "locationName":"githubOrgName"
+        }
+      },
+      "documentation":"<p>Input for initiating OAuth service registration flow.</p>"
+    },
+    "InitiateServiceRegistrationInputGithubOrgNameString":{
+      "type":"string",
+      "max":39,
+      "min":1,
+      "pattern":"[a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?"
+    },
+    "InitiateServiceRegistrationInputReturnToEndpointString":{
+      "type":"string",
+      "pattern":"https://[a-zA-Z0-9.-]*\\.(console\\.(aws|aws-dev)|awsc-(integ|preprod)\\.aws)\\.amazon\\.com(/.*)?"
+    },
+    "InitiateServiceRegistrationOutput":{
+      "type":"structure",
+      "required":["redirectTo"],
+      "members":{
+        "redirectTo":{
+          "shape":"String",
+          "documentation":"<p>The OAuth authorization URL to redirect the user to</p>",
+          "location":"header",
+          "locationName":"Location"
+        },
+        "sessionCookie":{
+          "shape":"String",
+          "documentation":"<p>Session cookie for OAuth flow tracking</p>",
+          "location":"header",
+          "locationName":"Set-Cookie"
+        }
+      },
+      "documentation":"<p>Output containing the OAuth authorization URL and session cookie.</p>"
+    },
+    "InitiateServiceRegistrationSupportedOAuth3LOService":{
+      "type":"string",
+      "documentation":"<p>Services supported for initiating OAuth 3-legged authorization flow.</p>",
+      "enum":[
+        "github",
+        "slack"
+      ]
+    },
+    "Integer":{
+      "type":"integer",
+      "box":true
+    },
+    "InternalServerException":{
+      "type":"structure",
+      "required":["message"],
+      "members":{
+        "message":{
+          "shape":"String",
+          "documentation":"<p>Detailed error message describing the internal error.</p>"
+        }
+      },
+      "documentation":"<p>An internal server error occurred. Please try again later.</p>",
+      "error":{"httpStatusCode":500},
+      "exception":true,
+      "fault":true
+    },
+    "InvalidParameterException":{
+      "type":"structure",
+      "required":["message"],
+      "members":{
+        "message":{
+          "shape":"String",
+          "documentation":"<p>Detailed error message describing which parameter is invalid and why.</p>"
+        }
+      },
+      "documentation":"<p>One or more parameters provided in the request are invalid.</p>",
+      "error":{
+        "httpStatusCode":400,
+        "senderFault":true
+      },
+      "exception":true
+    },
+    "KeyValuePair":{
+      "type":"structure",
+      "members":{
+        "key":{
+          "shape":"KeyValuePairKeyString",
+          "documentation":"<p>The key of the key-value pair. Supports Unicode letters, numbers, spaces, and common symbols.</p>"
+        },
+        "value":{
+          "shape":"KeyValuePairValueString",
+          "documentation":"<p>The value of the key-value pair. Supports Unicode letters, numbers, spaces, and common symbols.</p>"
+        }
+      },
+      "documentation":"<p>Generic key-value pair structure for tags and metadata.</p>"
+    },
+    "KeyValuePairKeyString":{
+      "type":"string",
+      "max":512,
+      "min":1,
+      "pattern":"([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)"
+    },
+    "KeyValuePairValueString":{
+      "type":"string",
+      "max":512,
+      "min":1,
+      "pattern":"([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)"
+    },
+    "LinkedAssociations":{
+      "type":"list",
+      "member":{"shape":"AssociationId"},
+      "documentation":"<p>Set of linked association IDs for parent-child relationships</p>"
+    },
+    "ListAgentSpacesInput":{
+      "type":"structure",
+      "members":{
+        "maxResults":{
+          "shape":"ListAgentSpacesInputMaxResultsInteger",
+          "documentation":"<p>Maximum number of results to return in a single call.</p>",
+          "location":"querystring",
+          "locationName":"maxResults"
+        },
+        "nextToken":{
+          "shape":"NextToken",
+          "documentation":"<p>Token for the next page of results.</p>",
+          "location":"querystring",
+          "locationName":"nextToken"
+        }
+      },
+      "documentation":"<p>Input for listing AgentSpaces with pagination support.</p>"
+    },
+    "ListAgentSpacesInputMaxResultsInteger":{
+      "type":"integer",
+      "box":true,
+      "max":100,
+      "min":1
+    },
+    "ListAgentSpacesOutput":{
+      "type":"structure",
+      "required":["agentSpaces"],
+      "members":{
+        "nextToken":{
+          "shape":"NextToken",
+          "documentation":"<p>Token to retrieve the next page of results, if there are more results.</p>"
+        },
+        "agentSpaces":{
+          "shape":"AgentSpaceList",
+          "documentation":"<p>The list of AgentSpaces.</p>"
+        }
+      },
+      "documentation":"<p>Output containing a list of AgentSpaces and pagination token.</p>"
+    },
+    "ListAssociationsInput":{
+      "type":"structure",
+      "required":["agentSpaceId"],
+      "members":{
+        "agentSpaceId":{
+          "shape":"AgentSpaceId",
+          "documentation":"<p>The unique identifier of the AgentSpace</p>",
+          "location":"uri",
+          "locationName":"agentSpaceId"
+        },
+        "maxResults":{
+          "shape":"ListAssociationsInputMaxResultsInteger",
+          "documentation":"<p>Maximum number of results to return in a single call.</p>",
+          "location":"querystring",
+          "locationName":"maxResults"
+        },
+        "nextToken":{
+          "shape":"NextToken",
+          "documentation":"<p>Token for the next page of results.</p>",
+          "location":"querystring",
+          "locationName":"nextToken"
+        },
+        "filterServiceTypes":{
+          "shape":"ListAssociationsInputFilterServiceTypesString",
+          "documentation":"<p>A comma-separated list of service types to filter list associations output</p>",
+          "location":"querystring",
+          "locationName":"filterServiceTypes"
+        }
+      },
+      "documentation":"<p>Input for listing service associations within an AgentSpace.</p>"
+    },
+    "ListAssociationsInputFilterServiceTypesString":{
+      "type":"string",
+      "pattern":"\\w+(?:,\\s*\\w+)*"
+    },
+    "ListAssociationsInputMaxResultsInteger":{
+      "type":"integer",
+      "box":true,
+      "max":100,
+      "min":1
+    },
+    "ListAssociationsOutput":{
+      "type":"structure",
+      "required":["associations"],
+      "members":{
+        "nextToken":{
+          "shape":"NextToken",
+          "documentation":"<p>Token to retrieve the next page of results, if there are more results.</p>"
+        },
+        "associations":{
+          "shape":"AssociationsList",
+          "documentation":"<p>The list of associations.</p>"
+        }
+      },
+      "documentation":"<p>Output containing a list of service associations and pagination token.</p>"
+    },
+    "ListServicesInput":{
+      "type":"structure",
+      "members":{
+        "maxResults":{
+          "shape":"ListServicesInputMaxResultsInteger",
+          "documentation":"<p>Maximum number of results to return in a single call.</p>",
+          "location":"querystring",
+          "locationName":"maxResults"
+        },
+        "nextToken":{
+          "shape":"NextToken",
+          "documentation":"<p>Token for the next page of results.</p>",
+          "location":"querystring",
+          "locationName":"nextToken"
+        },
+        "filterServiceType":{
+          "shape":"Service",
+          "documentation":"<p>Optional filter to list only services of a specific type.</p>",
+          "location":"querystring",
+          "locationName":"filterServiceType"
+        }
+      },
+      "documentation":"<p>Input for listing registered services with optional filtering by service type.</p>"
+    },
+    "ListServicesInputMaxResultsInteger":{
+      "type":"integer",
+      "box":true,
+      "max":100,
+      "min":1
+    },
+    "ListServicesOutput":{
+      "type":"structure",
+      "required":["services"],
+      "members":{
+        "nextToken":{
+          "shape":"NextToken",
+          "documentation":"<p>Token to retrieve the next page of results, if there are more results.</p>"
+        },
+        "services":{"shape":"RegisteredServicesList"}
+      },
+      "documentation":"<p>Output containing a list of registered services and pagination token.</p>"
+    },
+    "ListWebhooksInput":{
+      "type":"structure",
+      "required":[
+        "agentSpaceId",
+        "associationId"
+      ],
+      "members":{
+        "agentSpaceId":{
+          "shape":"AgentSpaceId",
+          "documentation":"<p>The unique identifier of the AgentSpace</p>",
+          "location":"uri",
+          "locationName":"agentSpaceId"
+        },
+        "associationId":{
+          "shape":"AssociationId",
+          "documentation":"<p>The unique identifier of the given association.</p>",
+          "location":"uri",
+          "locationName":"associationId"
+        }
+      },
+      "documentation":"<p>Input for listing service webhooks within an association.</p>"
+    },
+    "ListWebhooksOutput":{
+      "type":"structure",
+      "required":["webhooks"],
+      "members":{
+        "webhooks":{
+          "shape":"WebhooksList",
+          "documentation":"<p>The list of association webhooks.</p>"
+        }
+      },
+      "documentation":"<p>Output containing a list of service association webhooks.</p>"
+    },
+    "MCPServerAPIKeyConfig":{
+      "type":"structure",
+      "required":[
+        "apiKeyName",
+        "apiKeyValue",
+        "apiKeyHeader"
+      ],
+      "members":{
+        "apiKeyName":{
+          "shape":"MCPServerAPIKeyConfigApiKeyNameString",
+          "documentation":"<p>User friendly API key name specified by end user.</p>"
+        },
+        "apiKeyValue":{
+          "shape":"MCPServerAPIKeyConfigApiKeyValueString",
+          "documentation":"<p>API key value for authenticating with the service.</p>"
+        },
+        "apiKeyHeader":{
+          "shape":"MCPServerAPIKeyConfigApiKeyHeaderString",
+          "documentation":"<p>HTTP header name to send the API key in requests to the service.</p>"
+        }
+      },
+      "documentation":"<p>API key configuration for MCP server.</p>"
+    },
+    "MCPServerAPIKeyConfigApiKeyHeaderString":{
+      "type":"string",
+      "pattern":"[a-zA-Z0-9-]+"
+    },
+    "MCPServerAPIKeyConfigApiKeyNameString":{
+      "type":"string",
+      "pattern":"[a-zA-Z0-9_\\s-]+"
+    },
+    "MCPServerAPIKeyConfigApiKeyValueString":{
+      "type":"string",
+      "documentation":"<p>API Key Value for service.</p>",
+      "pattern":"[a-zA-Z0-9+/=._-]+",
+      "sensitive":true
+    },
+    "MCPServerAuthorizationConfig":{
+      "type":"structure",
+      "members":{
+        "oAuthClientCredentials":{
+          "shape":"MCPServerOAuthClientCredentialsConfig",
+          "documentation":"<p>MCP server configuration with OAuth client credentials.</p>"
+        },
+        "oAuth3LO":{
+          "shape":"MCPServerOAuth3LOConfig",
+          "documentation":"<p>MCP server configuration with OAuth 3LO.</p>"
+        },
+        "apiKey":{
+          "shape":"MCPServerAPIKeyConfig",
+          "documentation":"<p>MCP server configuration with API key authentication.</p>"
+        },
+        "bearerToken":{
+          "shape":"MCPServerBearerTokenConfig",
+          "documentation":"<p>MCP server configuration with Bearer token (RFC 6750).</p>"
+        },
+        "authorizationDiscovery":{
+          "shape":"MCPServerAuthorizationDiscoveryConfig",
+          "documentation":"<p>MCP server authorization discovery configuration.</p>"
+        }
+      },
+      "union":true
+    },
+    "MCPServerAuthorizationDiscoveryConfig":{
+      "type":"structure",
+      "required":["returnToEndpoint"],
+      "members":{
+        "returnToEndpoint":{
+          "shape":"MCPServerAuthorizationDiscoveryConfigReturnToEndpointString",
+          "documentation":"<p>The endpoint to return to after OAuth flow completes (must be AWS console domain)</p>"
+        }
+      },
+      "documentation":"<p>Authorization discovery configuration for MCP server.</p>"
+    },
+    "MCPServerAuthorizationDiscoveryConfigReturnToEndpointString":{
+      "type":"string",
+      "pattern":"https://[a-zA-Z0-9.-]*\\.(console\\.(aws|aws-dev)|awsc-(integ|preprod)\\.aws)\\.amazon\\.com(/.*)?"
+    },
+    "MCPServerAuthorizationMethod":{
+      "type":"string",
+      "documentation":"<p>Supported authorization methods for MCP servers.</p>",
+      "enum":[
+        "oauth-client-credentials",
+        "oauth-3lo",
+        "api-key",
+        "bearer-token"
+      ]
+    },
+    "MCPServerBearerTokenConfig":{
+      "type":"structure",
+      "required":[
+        "tokenName",
+        "tokenValue"
+      ],
+      "members":{
+        "tokenName":{
+          "shape":"MCPServerBearerTokenConfigTokenNameString",
+          "documentation":"<p>User friendly bearer token name specified by end user.</p>"
+        },
+        "tokenValue":{
+          "shape":"MCPServerBearerTokenConfigTokenValueString",
+          "documentation":"<p>Bearer token value in alphanumeric for authenticating with the service.</p>"
+        },
+        "authorizationHeader":{
+          "shape":"MCPServerBearerTokenConfigAuthorizationHeaderString",
+          "documentation":"<p>HTTP header name to send the bearer token in requests to the service. Defaults to 'Authorization' per RFC 6750.</p>"
+        }
+      },
+      "documentation":"<p>Bearer token configuration for MCP server (RFC 6750).</p>"
+    },
+    "MCPServerBearerTokenConfigAuthorizationHeaderString":{
+      "type":"string",
+      "pattern":"[a-zA-Z0-9-]+"
+    },
+    "MCPServerBearerTokenConfigTokenNameString":{
+      "type":"string",
+      "pattern":"[a-zA-Z0-9_\\s-]+"
+    },
+    "MCPServerBearerTokenConfigTokenValueString":{
+      "type":"string",
+      "documentation":"<p>Token value for authentication.</p>",
+      "pattern":"[\\S]+",
+      "sensitive":true
+    },
+    "MCPServerConfiguration":{
+      "type":"structure",
+      "required":[
+        "name",
+        "endpoint",
+        "tools"
+      ],
+      "members":{
+        "name":{
+          "shape":"MCPServerConfigurationNameString",
+          "documentation":"<p>The name of the MCP server.</p>"
+        },
+        "endpoint":{
+          "shape":"MCPServerConfigurationEndpointString",
+          "documentation":"<p>MCP server endpoint URL</p>"
+        },
+        "description":{
+          "shape":"Description",
+          "documentation":"<p>The description of the MCP server.</p>"
+        },
+        "shouldUpdateWebhook":{
+          "shape":"Boolean",
+          "documentation":"<p>Should the webhook be updated</p>"
+        },
+        "tools":{
+          "shape":"MCPToolsList",
+          "documentation":"<p>List of MCP tools can be used with the association.</p>"
+        }
+      },
+      "documentation":"<p>Configuration for Model Context Protocol (MCP) server integration.</p>"
+    },
+    "MCPServerConfigurationEndpointString":{
+      "type":"string",
+      "pattern":"https://[a-zA-Z0-9.-]+(?::[0-9]+)?(?:/.*)?"
+    },
+    "MCPServerConfigurationNameString":{
+      "type":"string",
+      "pattern":"[a-zA-Z0-9_-]+"
+    },
+    "MCPServerDatadogConfiguration":{
+      "type":"structure",
+      "required":[
+        "name",
+        "endpoint"
+      ],
+      "members":{
+        "name":{
+          "shape":"MCPServerDatadogConfigurationNameString",
+          "documentation":"<p>The name of the MCP server.</p>"
+        },
+        "endpoint":{
+          "shape":"MCPServerDatadogConfigurationEndpointString",
+          "documentation":"<p>MCP server endpoint URL</p>"
+        },
+        "description":{
+          "shape":"Description",
+          "documentation":"<p>The description of the MCP server.</p>"
+        },
+        "shouldUpdateWebhook":{
+          "shape":"Boolean",
+          "documentation":"<p>Should the webhook be updated</p>"
+        }
+      },
+      "documentation":"<p>Configuration for Model Context Protocol (MCP) server integration.</p>"
+    },
+    "MCPServerDatadogConfigurationEndpointString":{
+      "type":"string",
+      "pattern":"https://[a-zA-Z0-9.-]+(?::[0-9]+)?(?:/.*)?"
+    },
+    "MCPServerDatadogConfigurationNameString":{
+      "type":"string",
+      "pattern":"[a-zA-Z0-9_-]+"
+    },
+    "MCPServerDetails":{
+      "type":"structure",
+      "required":[
+        "name",
+        "endpoint",
+        "authorizationConfig"
+      ],
+      "members":{
+        "name":{
+          "shape":"MCPServerDetailsNameString",
+          "documentation":"<p>MCP server name.</p>"
+        },
+        "endpoint":{
+          "shape":"MCPServerDetailsEndpointString",
+          "documentation":"<p>MCP server endpoint URL.</p>"
+        },
+        "description":{
+          "shape":"MCPServerDetailsDescriptionString",
+          "documentation":"<p>Optional description for the MCP server.</p>"
+        },
+        "authorizationConfig":{
+          "shape":"MCPServerAuthorizationConfig",
+          "documentation":"<p>MCP server authorization configuration.</p>"
+        }
+      },
+      "documentation":"<p>Complete service details for MCP server integration.</p>"
+    },
+    "MCPServerDetailsDescriptionString":{
+      "type":"string",
+      "documentation":"<p>Description field</p>",
+      "max":500,
+      "min":0,
+      "pattern":"[\\p{L}\\p{N}\\p{P}\\p{S}\\p{Z}]+",
+      "sensitive":true
+    },
+    "MCPServerDetailsEndpointString":{
+      "type":"string",
+      "pattern":"https://[a-zA-Z0-9.-]+(?::[0-9]+)?(?:/.*)?"
+    },
+    "MCPServerDetailsNameString":{
+      "type":"string",
+      "pattern":"[a-zA-Z0-9_-]+"
+    },
+    "MCPServerNewRelicConfiguration":{
+      "type":"structure",
+      "required":[
+        "accountId",
+        "endpoint"
+      ],
+      "members":{
+        "accountId":{
+          "shape":"MCPServerNewRelicConfigurationAccountIdString",
+          "documentation":"<p>New Relic Account ID</p>"
+        },
+        "endpoint":{
+          "shape":"MCPServerNewRelicConfigurationEndpointString",
+          "documentation":"<p>MCP server endpoint URL (e.g., https://mcp.newrelic.com/mcp/)</p>"
+        }
+      }
+    },
+    "MCPServerNewRelicConfigurationAccountIdString":{
+      "type":"string",
+      "min":6,
+      "pattern":"[0-9]+"
+    },
+    "MCPServerNewRelicConfigurationEndpointString":{
+      "type":"string",
+      "pattern":"https://[a-zA-Z0-9.-]+(?::[0-9]+)?(?:/.*)?"
+    },
+    "MCPServerOAuth3LOConfig":{
+      "type":"structure",
+      "required":[
+        "clientId",
+        "returnToEndpoint",
+        "authorizationUrl",
+        "exchangeUrl"
+      ],
+      "members":{
+        "clientName":{
+          "shape":"MCPServerOAuth3LOConfigClientNameString",
+          "documentation":"<p>User friendly OAuth client name specified by end user.</p>"
+        },
+        "clientId":{
+          "shape":"ClientId",
+          "documentation":"<p>OAuth client ID for authenticating with the service.</p>"
+        },
+        "exchangeParameters":{
+          "shape":"Document",
+          "documentation":"<p>OAuth token exchange parameters for authenticating with the service.</p>"
+        },
+        "returnToEndpoint":{
+          "shape":"MCPServerOAuth3LOConfigReturnToEndpointString",
+          "documentation":"<p>The endpoint to return to after OAuth flow completes (must be AWS console domain)</p>"
+        },
+        "authorizationUrl":{
+          "shape":"MCPServerOAuth3LOConfigAuthorizationUrlString",
+          "documentation":"<p>OAuth authorization URL for 3LO authentication.</p>"
+        },
+        "exchangeUrl":{
+          "shape":"MCPServerOAuth3LOConfigExchangeUrlString",
+          "documentation":"<p>OAuth token exchange URL.</p>"
+        },
+        "clientSecret":{
+          "shape":"ClientSecret",
+          "documentation":"<p>OAuth client secret for authenticating with the service. Required for confidential clients or when PKCE is not supported. Optional for public clients using PKCE.</p>"
+        },
+        "supportCodeChallenge":{
+          "shape":"Boolean",
+          "documentation":"<p>Whether the service supports PKCE (Proof Key for Code Exchange) for enhanced security during the OAuth flow.</p>"
+        },
+        "scopes":{
+          "shape":"Scopes",
+          "documentation":"<p>OAuth scopes for 3LO authentication. The service will always request scope offline_access.</p>"
+        }
+      },
+      "documentation":"<p>OAuth 3-legged authorization configuration for MCP server.</p>"
+    },
+    "MCPServerOAuth3LOConfigAuthorizationUrlString":{
+      "type":"string",
+      "pattern":"https://[a-zA-Z0-9.-]+(?::[0-9]+)?(?:/.*)?"
+    },
+    "MCPServerOAuth3LOConfigClientNameString":{
+      "type":"string",
+      "max":100,
+      "min":1,
+      "pattern":"[\\p{L}\\p{N}\\p{Z}._-]+"
+    },
+    "MCPServerOAuth3LOConfigExchangeUrlString":{
+      "type":"string",
+      "pattern":"https://[a-zA-Z0-9.-]+(?::[0-9]+)?(?:/.*)?"
+    },
+    "MCPServerOAuth3LOConfigReturnToEndpointString":{
+      "type":"string",
+      "pattern":"https://[a-zA-Z0-9.-]*\\.(console\\.(aws|aws-dev)|awsc-(integ|preprod)\\.aws)\\.amazon\\.com(/.*)?"
+    },
+    "MCPServerOAuthClientCredentialsConfig":{
+      "type":"structure",
+      "required":[
+        "clientId",
+        "clientSecret",
+        "exchangeUrl"
+      ],
+      "members":{
+        "clientName":{
+          "shape":"MCPServerOAuthClientCredentialsConfigClientNameString",
+          "documentation":"<p>User friendly OAuth client name specified by end user.</p>"
+        },
+        "clientId":{
+          "shape":"ClientId",
+          "documentation":"<p>OAuth client ID for authenticating with the service.</p>"
+        },
+        "exchangeParameters":{
+          "shape":"Document",
+          "documentation":"<p>OAuth token exchange parameters for authenticating with the service.</p>"
+        },
+        "clientSecret":{
+          "shape":"ClientSecret",
+          "documentation":"<p>OAuth client secret for authenticating with the service.</p>"
+        },
+        "exchangeUrl":{
+          "shape":"MCPServerOAuthClientCredentialsConfigExchangeUrlString",
+          "documentation":"<p>OAuth token exchange URL.</p>"
+        },
+        "scopes":{
+          "shape":"Scopes",
+          "documentation":"<p>OAuth scopes for 3LO authentication. The service will always request scope offline_access.</p>"
+        }
+      },
+      "documentation":"<p>OAuth client credentials configuration for MCP server.</p>"
+    },
+    "MCPServerOAuthClientCredentialsConfigClientNameString":{
+      "type":"string",
+      "max":100,
+      "min":1,
+      "pattern":"[\\p{L}\\p{N}\\p{Z}._-]+"
+    },
+    "MCPServerOAuthClientCredentialsConfigExchangeUrlString":{
+      "type":"string",
+      "pattern":"https://[a-zA-Z0-9.-]+(?::[0-9]+)?(?:/.*)?"
+    },
+    "MCPServerSplunkConfiguration":{
+      "type":"structure",
+      "required":[
+        "name",
+        "endpoint"
+      ],
+      "members":{
+        "name":{
+          "shape":"MCPServerSplunkConfigurationNameString",
+          "documentation":"<p>The name of the MCP server.</p>"
+        },
+        "endpoint":{
+          "shape":"MCPServerSplunkConfigurationEndpointString",
+          "documentation":"<p>MCP server endpoint URL</p>"
+        },
+        "description":{
+          "shape":"Description",
+          "documentation":"<p>The description of the MCP server.</p>"
+        },
+        "shouldUpdateWebhook":{
+          "shape":"Boolean",
+          "documentation":"<p>Should the webhook be updated</p>"
+        }
+      },
+      "documentation":"<p>Configuration for Model Context Protocol (MCP) server integration.</p>"
+    },
+    "MCPServerSplunkConfigurationEndpointString":{
+      "type":"string",
+      "pattern":"https://[a-zA-Z0-9.-]+(?::[0-9]+)?(?:/.*)?"
+    },
+    "MCPServerSplunkConfigurationNameString":{
+      "type":"string",
+      "pattern":"[a-zA-Z0-9_-]+"
+    },
+    "MCPToolsList":{
+      "type":"list",
+      "member":{"shape":"MCPToolsListMemberString"},
+      "documentation":"<p>List of MCP tool names available for the association.</p>"
+    },
+    "MCPToolsListMemberString":{
+      "type":"string",
+      "pattern":"[a-zA-Z0-9_-]+"
+    },
+    "McpServerToolList":{
+      "type":"list",
+      "member":{"shape":"String"}
+    },
+    "MonitorAccountType":{
+      "type":"string",
+      "documentation":"<p>AWS association type for monitoring account.</p>",
+      "enum":["monitor"]
+    },
+    "NewRelicAlertPolicyIds":{
+      "type":"list",
+      "member":{"shape":"NewRelicAlertPolicyIdsMemberString"},
+      "documentation":"<p>List of New Relic alert policy IDs</p>"
+    },
+    "NewRelicAlertPolicyIdsMemberString":{
+      "type":"string",
+      "pattern":"[0-9]+"
+    },
+    "NewRelicApiKeyConfig":{
+      "type":"structure",
+      "required":[
+        "apiKey",
+        "accountId",
+        "region"
+      ],
+      "members":{
+        "apiKey":{
+          "shape":"NewRelicApiKeyConfigApiKeyString",
+          "documentation":"<p>New Relic User API Key</p>"
+        },
+        "accountId":{
+          "shape":"NewRelicApiKeyConfigAccountIdString",
+          "documentation":"<p>New Relic Account ID</p>"
+        },
+        "region":{
+          "shape":"NewRelicRegion",
+          "documentation":"<p>New Relic region (US or EU)</p>"
+        },
+        "applicationIds":{
+          "shape":"NewRelicApplicationIds",
+          "documentation":"<p>List of monitored APM application IDs in New Relic</p>"
+        },
+        "entityGuids":{
+          "shape":"NewRelicEntityGuids",
+          "documentation":"<p>List of globally unique IDs for New Relic resources (apps, hosts, services)</p>"
+        },
+        "alertPolicyIds":{
+          "shape":"NewRelicAlertPolicyIds",
+          "documentation":"<p>List of alert policy IDs grouping related conditions</p>"
+        }
+      }
+    },
+    "NewRelicApiKeyConfigAccountIdString":{
+      "type":"string",
+      "pattern":"[0-9]+"
+    },
+    "NewRelicApiKeyConfigApiKeyString":{
+      "type":"string",
+      "pattern":"NRAK-[A-Z0-9]+"
+    },
+    "NewRelicApplicationIds":{
+      "type":"list",
+      "member":{"shape":"NewRelicApplicationIdsMemberString"},
+      "documentation":"<p>List of New Relic application IDs</p>"
+    },
+    "NewRelicApplicationIdsMemberString":{
+      "type":"string",
+      "pattern":"[0-9]+"
+    },
+    "NewRelicEntityGuids":{
+      "type":"list",
+      "member":{"shape":"NewRelicEntityGuidsMemberString"},
+      "documentation":"<p>List of New Relic entity GUIDs</p>"
+    },
+    "NewRelicEntityGuidsMemberString":{
+      "type":"string",
+      "pattern":"[a-zA-Z0-9_.-]+"
+    },
+    "NewRelicRegion":{
+      "type":"string",
+      "documentation":"<p>The NewRelic region (determines API endpoint).</p>",
+      "enum":[
+        "US",
+        "EU"
+      ]
+    },
+    "NewRelicServiceAuthorizationConfig":{
+      "type":"structure",
+      "members":{
+        "apiKey":{
+          "shape":"NewRelicApiKeyConfig",
+          "documentation":"<p>New Relic API Key authentication (apiKey, accountId, region).</p>"
+        }
+      },
+      "union":true
+    },
+    "NewRelicServiceDetails":{
+      "type":"structure",
+      "required":["authorizationConfig"],
+      "members":{
+        "authorizationConfig":{
+          "shape":"NewRelicServiceAuthorizationConfig",
+          "documentation":"<p>New Relic MCP server authorization configuration.</p>"
+        }
+      }
+    },
+    "NextToken":{
+      "type":"string",
+      "documentation":"<p>Pagination token for retrieving next page of results.</p>",
+      "max":1024,
+      "min":1,
+      "pattern":"[a-zA-Z0-9+/=._:?&%~|*-]+"
+    },
+    "OAuthAdditionalStepDetails":{
+      "type":"structure",
+      "required":["authorizationUrl"],
+      "members":{
+        "authorizationUrl":{
+          "shape":"String",
+          "documentation":"<p>The URL to redirect the user to for OAuth authorization.</p>"
+        }
+      },
+      "documentation":"<p>Details for completing OAuth authorization step.</p>"
+    },
+    "PostRegisterServiceSupportedService":{
+      "type":"string",
+      "documentation":"<p>Services that can be registered via the post-registration API (excludes OAuth 3LO services).</p>",
+      "enum":[
+        "dynatrace",
+        "servicenow",
+        "gitlab",
+        "eventChannel",
+        "mcpservernewrelic",
+        "mcpserverdatadog",
+        "mcpserver",
+        "mcpserversplunk"
+      ]
+    },
+    "RegisterServiceInput":{
+      "type":"structure",
+      "required":[
+        "service",
+        "serviceDetails"
+      ],
+      "members":{
+        "service":{
+          "shape":"PostRegisterServiceSupportedService",
+          "location":"uri",
+          "locationName":"service"
+        },
+        "serviceDetails":{
+          "shape":"ServiceDetails",
+          "documentation":"<p>Service-specific authorization configuration parameters</p>"
+        }
+      },
+      "documentation":"<p>Input for registering a new service with the platform.</p>"
+    },
+    "RegisterServiceOutput":{
+      "type":"structure",
+      "members":{
+        "serviceId":{
+          "shape":"ServiceId",
+          "documentation":"<p>Service ID - present when registration is complete, absent when additional steps are required</p>"
+        },
+        "additionalStep":{
+          "shape":"AdditionalServiceRegistrationStep",
+          "documentation":"<p>Indicates if additional steps are required to complete service registration (e.g., 3-legged OAuth)</p>"
+        }
+      },
+      "documentation":"<p>Output containing the service ID and any additional steps required for registration.</p>"
+    },
+    "RegisteredGitLabServiceDetails":{
+      "type":"structure",
+      "required":[
+        "targetUrl",
+        "tokenType"
+      ],
+      "members":{
+        "targetUrl":{
+          "shape":"String",
+          "documentation":"<p>The GitLab instance URL.</p>"
+        },
+        "tokenType":{
+          "shape":"GitLabTokenType",
+          "documentation":"<p>Type of GitLab access token</p>"
+        },
+        "groupId":{
+          "shape":"String",
+          "documentation":"<p>Optional GitLab group ID for group-level access tokens</p>"
+        }
+      },
+      "documentation":"<p>Details specific to a registered GitLab instance.</p>"
+    },
+    "RegisteredGithubServiceDetails":{
+      "type":"structure",
+      "required":[
+        "owner",
+        "ownerType"
+      ],
+      "members":{
+        "owner":{
+          "shape":"String",
+          "documentation":"<p>The GitHub repository owner name.</p>"
+        },
+        "ownerType":{
+          "shape":"GithubRepoOwnerType",
+          "documentation":"<p>The GitHub repository owner type.</p>"
+        }
+      },
+      "documentation":"<p>Details specific to a registered GitHub service.</p>"
+    },
+    "RegisteredMCPServerDetails":{
+      "type":"structure",
+      "required":[
+        "name",
+        "endpoint",
+        "authorizationMethod"
+      ],
+      "members":{
+        "name":{
+          "shape":"String",
+          "documentation":"<p>The MCP server name.</p>"
+        },
+        "endpoint":{
+          "shape":"String",
+          "documentation":"<p>The MCP server endpoint URL.</p>"
+        },
+        "authorizationMethod":{
+          "shape":"MCPServerAuthorizationMethod",
+          "documentation":"<p>The MCP server uses this authorization method.</p>"
+        },
+        "description":{
+          "shape":"Description",
+          "documentation":"<p>Optional description for the MCP server.</p>"
+        },
+        "apiKeyHeader":{
+          "shape":"String",
+          "documentation":"<p>If the MCP server uses API key authentication, these details are provided.</p>"
+        }
+      },
+      "documentation":"<p>Details specific to a registered MCP (Model Context Protocol) server.</p>"
+    },
+    "RegisteredNewRelicDetails":{
+      "type":"structure",
+      "required":[
+        "accountId",
+        "region"
+      ],
+      "members":{
+        "accountId":{
+          "shape":"String",
+          "documentation":"<p>The NewRelic account ID.</p>"
+        },
+        "region":{
+          "shape":"NewRelicRegion",
+          "documentation":"<p>The NewRelic region (determines API endpoint).</p>"
+        },
+        "description":{
+          "shape":"String",
+          "documentation":"<p>Optional user description.</p>"
+        }
+      },
+      "documentation":"<p>Details specific to a registered NewRelic instance.</p>"
+    },
+    "RegisteredService":{
+      "type":"structure",
+      "required":[
+        "serviceId",
+        "serviceType"
+      ],
+      "members":{
+        "serviceId":{
+          "shape":"ServiceId",
+          "documentation":"<p>The unique identifier of a service.</p>"
+        },
+        "serviceType":{
+          "shape":"Service",
+          "documentation":"<p>The service type e.g github or dynatrace</p>"
+        },
+        "accessibleResources":{
+          "shape":"DocumentList",
+          "documentation":"<p>List of accessible resources for this service.</p>"
+        },
+        "additionalServiceDetails":{
+          "shape":"AdditionalServiceDetails",
+          "documentation":"<p>Additional details specific to the service type.</p>"
+        }
+      },
+      "documentation":"<p>Represents a registered service with its configuration and accessible resources.</p>"
+    },
+    "RegisteredServiceNowDetails":{
+      "type":"structure",
+      "members":{
+        "instanceUrl":{
+          "shape":"ServiceNowInstanceUrl",
+          "documentation":"<p>The ServiceNow instance url</p>"
+        }
+      },
+      "documentation":"<p>Details specific to a registered ServiceNow instance.</p>"
+    },
+    "RegisteredServicesList":{
+      "type":"list",
+      "member":{"shape":"RegisteredService"},
+      "documentation":"<p>List of registered services.</p>"
+    },
+    "RegisteredSlackServiceDetails":{
+      "type":"structure",
+      "required":[
+        "teamId",
+        "teamName"
+      ],
+      "members":{
+        "teamId":{
+          "shape":"String",
+          "documentation":"<p>The Slack team ID.</p>"
+        },
+        "teamName":{
+          "shape":"String",
+          "documentation":"<p>The Slack team name.</p>"
+        }
+      },
+      "documentation":"<p>Details specific to a registered Slack workspace.</p>"
+    },
+    "ResourceNotFoundException":{
+      "type":"structure",
+      "required":["message"],
+      "members":{
+        "message":{
+          "shape":"String",
+          "documentation":"<p>Detailed error message describing which resource was not found.</p>"
+        }
+      },
+      "documentation":"<p>The requested resource could not be found.</p>",
+      "error":{
+        "httpStatusCode":404,
+        "senderFault":true
+      },
+      "exception":true
+    },
+    "RoleArn":{
+      "type":"string",
+      "documentation":"<p>AWS IAM role ARN.</p>",
+      "max":255,
+      "min":1,
+      "pattern":"arn:aws:iam::\\d{12}:role/.+"
+    },
+    "Scopes":{
+      "type":"list",
+      "member":{"shape":"String"},
+      "documentation":"<p>List of OAuth scopes.</p>"
+    },
+    "SearchServiceAccessibleResourceInput":{
+      "type":"structure",
+      "required":["serviceId"],
+      "members":{
+        "serviceId":{
+          "shape":"ServiceId",
+          "documentation":"<p>The service id to list accessible resources.</p>",
+          "location":"uri",
+          "locationName":"serviceId"
+        },
+        "options":{
+          "shape":"ServiceAccessibleResourcesOptions",
+          "documentation":"<p>The service options to lookup accessible resources.</p>"
+        }
+      }
+    },
+    "SearchServiceAccessibleResourceOutput":{
+      "type":"structure",
+      "members":{
+        "accessibleResources":{
+          "shape":"ServiceAccessibleResources",
+          "documentation":"<p>List of accessible resources for this service.</p>"
+        }
+      }
+    },
+    "Service":{
+      "type":"string",
+      "documentation":"<p>Enumeration of all supported service types, combining OAuth 3-legged, client credentials, and simple token authentication methods.</p>",
+      "enum":[
+        "github",
+        "slack",
+        "dynatrace",
+        "servicenow",
+        "gitlab",
+        "eventChannel",
+        "mcpservernewrelic",
+        "mcpserverdatadog",
+        "mcpserver",
+        "mcpserversplunk"
+      ]
+    },
+    "ServiceAccessibleResources":{
+      "type":"structure",
+      "members":{
+        "github":{"shape":"AccessibleGitHubRepositoryResources"},
+        "gitlab":{"shape":"AccessibleGitLabProjectResources"},
+        "mcpserver":{"shape":"AccessibleMcpServerToolResources"}
+      },
+      "union":true
+    },
+    "ServiceAccessibleResourcesOptions":{
+      "type":"structure",
+      "members":{
+        "github":{"shape":"AccessibleGitHubRepositoryOptions"},
+        "gitlab":{"shape":"AccessibleGitLabProjectOptions"},
+        "mcpserver":{"shape":"AccessibleMcpServerToolOptions"}
+      },
+      "union":true
+    },
+    "ServiceConfiguration":{
+      "type":"structure",
+      "members":{
+        "sourceAws":{
+          "shape":"SourceAwsConfiguration",
+          "documentation":"<p>AWS source account configuration for monitoring resources.</p>"
+        },
+        "aws":{
+          "shape":"AWSConfiguration",
+          "documentation":"<p>AWS monitor account configuration.</p>"
+        },
+        "github":{
+          "shape":"GitHubConfiguration",
+          "documentation":"<p>GitHub repository integration configuration.</p>"
+        },
+        "slack":{
+          "shape":"SlackConfiguration",
+          "documentation":"<p>Slack workspace integration configuration.</p>"
+        },
+        "dynatrace":{
+          "shape":"DynatraceConfiguration",
+          "documentation":"<p>Dynatrace monitoring integration configuration.</p>"
+        },
+        "servicenow":{
+          "shape":"ServiceNowConfiguration",
+          "documentation":"<p>ServiceNow instance integration configuration.</p>"
+        },
+        "mcpservernewrelic":{
+          "shape":"MCPServerNewRelicConfiguration",
+          "documentation":"<p>NewRelic instance integration configuration.</p>"
+        },
+        "mcpserverdatadog":{
+          "shape":"MCPServerDatadogConfiguration",
+          "documentation":"<p>Datadog MCP server integration configuration.</p>"
+        },
+        "mcpserver":{
+          "shape":"MCPServerConfiguration",
+          "documentation":"<p>MCP (Model Context Protocol) server integration configuration.</p>"
+        },
+        "gitlab":{
+          "shape":"GitLabConfiguration",
+          "documentation":"<p>GitLab project integration configuration.</p>"
+        },
+        "mcpserversplunk":{
+          "shape":"MCPServerSplunkConfiguration",
+          "documentation":"<p>Splunk MCP server integration configuration.</p>"
+        },
+        "eventChannel":{
+          "shape":"EventChannelConfiguration",
+          "documentation":"<p>Event Channel instance integration configuration.</p>"
+        }
+      },
+      "documentation":"<p>Union of all supported service configuration types. Each service has its own specific configuration structure.</p>",
+      "union":true
+    },
+    "ServiceDetails":{
+      "type":"structure",
+      "members":{
+        "dynatrace":{
+          "shape":"DynatraceServiceDetails",
+          "documentation":"<p>Dynatrace-specific service details.</p>"
+        },
+        "servicenow":{
+          "shape":"ServiceNowServiceDetails",
+          "documentation":"<p>ServiceNow-specific service details.</p>"
+        },
+        "mcpserverdatadog":{
+          "shape":"DatadogServiceDetails",
+          "documentation":"<p>Datadog MCP server-specific service details.</p>"
+        },
+        "mcpserver":{
+          "shape":"MCPServerDetails",
+          "documentation":"<p>MCP server-specific service details.</p>"
+        },
+        "gitlab":{
+          "shape":"GitLabDetails",
+          "documentation":"<p>GitLab-specific service details.</p>"
+        },
+        "mcpserversplunk":{
+          "shape":"MCPServerDetails",
+          "documentation":"<p>Splunk MCP server-specific service details.</p>"
+        },
+        "mcpservernewrelic":{
+          "shape":"NewRelicServiceDetails",
+          "documentation":"<p>New Relic-specific service details.</p>"
+        },
+        "eventChannel":{
+          "shape":"EventChannelDetails",
+          "documentation":"<p>Event Channel specific service details.</p>"
+        }
+      },
+      "documentation":"<p>Union of service-specific configuration details for service registration.</p>",
+      "union":true
+    },
+    "ServiceId":{
+      "type":"string",
+      "documentation":"<p>Unique identifier for a registered service</p>",
+      "max":255,
+      "min":1,
+      "pattern":"[a-zA-Z0-9_-]+"
+    },
+    "ServiceNowConfiguration":{
+      "type":"structure",
+      "members":{
+        "instanceUrl":{
+          "shape":"String",
+          "documentation":"<p>ServiceNow instance URL</p>",
+          "deprecated":true,
+          "deprecatedMessage":"To be removed once the migration in core package is complete"
+        },
+        "instanceId":{
+          "shape":"String",
+          "documentation":"<p>ServiceNow instance ID</p>"
+        },
+        "shouldUpdateWebhook":{
+          "shape":"Boolean",
+          "documentation":"<p>Should the webhook be updated</p>"
+        }
+      },
+      "documentation":"<p>Configuration for ServiceNow instance integration.</p>"
+    },
+    "ServiceNowInstanceUrl":{
+      "type":"string",
+      "documentation":"<p>ServiceNow instance URL.</p>",
+      "max":255,
+      "min":1,
+      "pattern":"https://[a-zA-Z0-9]([a-zA-Z0-9.-]*[a-zA-Z0-9])\\.service-now\\.com/?"
+    },
+    "ServiceNowOAuthClientCredentialsConfig":{
+      "type":"structure",
+      "required":[
+        "clientId",
+        "clientSecret"
+      ],
+      "members":{
+        "clientName":{
+          "shape":"ServiceNowOAuthClientCredentialsConfigClientNameString",
+          "documentation":"<p>User friendly OAuth client name specified by end user.</p>"
+        },
+        "clientId":{
+          "shape":"ClientId",
+          "documentation":"<p>OAuth client ID for authenticating with the service.</p>"
+        },
+        "exchangeParameters":{
+          "shape":"Document",
+          "documentation":"<p>OAuth token exchange parameters for authenticating with the service.</p>"
+        },
+        "clientSecret":{
+          "shape":"ClientSecret",
+          "documentation":"<p>OAuth client secret for authenticating with the service.</p>"
+        }
+      },
+      "documentation":"<p>OAuth client credentials configuration for ServiceNow.</p>"
+    },
+    "ServiceNowOAuthClientCredentialsConfigClientNameString":{
+      "type":"string",
+      "max":100,
+      "min":1,
+      "pattern":"[\\p{L}\\p{N}\\p{Z}._-]+"
+    },
+    "ServiceNowServiceAuthorizationConfig":{
+      "type":"structure",
+      "members":{
+        "oAuthClientCredentials":{
+          "shape":"ServiceNowOAuthClientCredentialsConfig",
+          "documentation":"<p>OAuth client credentials configuration.</p>"
+        }
+      },
+      "documentation":"<p>Authorization configuration options for ServiceNow service.</p>",
+      "union":true
+    },
+    "ServiceNowServiceDetails":{
+      "type":"structure",
+      "required":["instanceUrl"],
+      "members":{
+        "instanceUrl":{
+          "shape":"ServiceNowInstanceUrl",
+          "documentation":"<p>ServiceNow instance URL.</p>"
+        },
+        "authorizationConfig":{
+          "shape":"ServiceNowServiceAuthorizationConfig",
+          "documentation":"<p>ServiceNow OAuth client credentials configuration. Use this when registering with OAuth client credentials flow.</p>"
+        }
+      },
+      "documentation":"<p>Complete service details for ServiceNow integration.</p>"
+    },
+    "ServiceQuotaExceededException":{
+      "type":"structure",
+      "required":["message"],
+      "members":{
+        "message":{
+          "shape":"String",
+          "documentation":"<p>Detailed error message describing which quota was exceeded.</p>"
+        }
+      },
+      "documentation":"<p>The request would exceed the service quota limit.</p>",
+      "error":{
+        "httpStatusCode":402,
+        "senderFault":true
+      },
+      "exception":true
+    },
+    "SessionToken":{
+      "type":"string",
+      "documentation":"<p>Sensitive session token used for authentication.</p>",
+      "sensitive":true
+    },
+    "SlackChannel":{
+      "type":"structure",
+      "required":["channelId"],
+      "members":{
+        "channelName":{
+          "shape":"String",
+          "documentation":"<p>Slack channel name</p>"
+        },
+        "channelId":{
+          "shape":"SlackChannelChannelIdString",
+          "documentation":"<p>Slack channel ID</p>"
+        }
+      },
+      "documentation":"<p>Represents a Slack channel with its ID and optional name.</p>"
+    },
+    "SlackChannelChannelIdString":{
+      "type":"string",
+      "max":16,
+      "min":8,
+      "pattern":"[CGD][A-Z0-9]+"
+    },
+    "SlackConfiguration":{
+      "type":"structure",
+      "required":[
+        "workspaceId",
+        "workspaceName",
+        "transmissionTarget"
+      ],
+      "members":{
+        "workspaceId":{
+          "shape":"SlackConfigurationWorkspaceIdString",
+          "documentation":"<p>Associated Slack workspace ID</p>"
+        },
+        "workspaceName":{
+          "shape":"String",
+          "documentation":"<p>Associated Slack workspace name</p>"
+        },
+        "transmissionTarget":{
+          "shape":"SlackTransmissionTarget",
+          "documentation":"<p>Transmission targets for agent notifications</p>"
+        }
+      },
+      "documentation":"<p>Configuration for Slack workspace integration.</p>"
+    },
+    "SlackConfigurationWorkspaceIdString":{
+      "type":"string",
+      "pattern":"[TE][A-Z0-9]+"
+    },
+    "SlackTransmissionTarget":{
+      "type":"structure",
+      "required":["opsOncallTarget"],
+      "members":{
+        "opsOncallTarget":{
+          "shape":"SlackChannel",
+          "documentation":"<p>Destination for On-call Agent (Ops1)</p>"
+        },
+        "opsSRETarget":{
+          "shape":"SlackChannel",
+          "documentation":"<p>Destination for SRE Agent (Ops1.5)</p>"
+        }
+      },
+      "documentation":"<p>Defines Slack channels for different types of agent notifications.</p>"
+    },
+    "SourceAccountType":{
+      "type":"string",
+      "documentation":"<p>AWS association type for source account.</p>",
+      "enum":["source"]
+    },
+    "SourceAwsConfiguration":{
+      "type":"structure",
+      "required":[
+        "accountId",
+        "accountType",
+        "assumableRoleArn"
+      ],
+      "members":{
+        "accountId":{
+          "shape":"SourceAwsConfigurationAccountIdString",
+          "documentation":"<p>AWS Account Id corresponding to provided resources.</p>"
+        },
+        "accountType":{
+          "shape":"SourceAccountType",
+          "documentation":"<p>Account Type 'source' for AIDevOps monitoring.</p>"
+        },
+        "assumableRoleArn":{
+          "shape":"String",
+          "documentation":"<p>Role ARN to be assumed by AIDevOps to operate on behalf of customer.</p>"
+        },
+        "externalId":{
+          "shape":"String",
+          "documentation":"<p>External ID for additional security when assuming the role. Used to prevent the confused deputy problem.</p>"
+        },
+        "resources":{
+          "shape":"AWSResourceList",
+          "documentation":"<p>List of AWS resource to be associated to agentspace</p>"
+        },
+        "tags":{"shape":"AWSTagList"}
+      },
+      "documentation":"<p>Configuration for AWS source account integration. Note: passRole check on 'assumableRoleArn' is not supported.</p>"
+    },
+    "SourceAwsConfigurationAccountIdString":{
+      "type":"string",
+      "pattern":".*\\d{12}.*"
+    },
+    "String":{"type":"string"},
+    "SyntheticTimestamp_date_time":{
+      "type":"timestamp",
+      "timestampFormat":"iso8601"
+    },
+    "Team":{
+      "type":"string",
+      "documentation":"<p>Team identifier string.</p>"
+    },
+    "TeamList":{
+      "type":"list",
+      "member":{"shape":"Team"},
+      "documentation":"<p>A list of Team IDs, limited to 10 teams maximum.</p>",
+      "max":10,
+      "min":0
+    },
+    "ThrottlingException":{
+      "type":"structure",
+      "required":["message"],
+      "members":{
+        "message":{
+          "shape":"String",
+          "documentation":"<p>Detailed error message describing the throttling condition.</p>"
+        }
+      },
+      "documentation":"<p>The request was throttled due to too many requests. Please slow down and try again.</p>",
+      "error":{
+        "httpStatusCode":429,
+        "senderFault":true
+      },
+      "exception":true
+    },
+    "UpdateAgentSpaceInput":{
+      "type":"structure",
+      "required":[
+        "name",
+        "agentSpaceId"
+      ],
+      "members":{
+        "name":{
+          "shape":"AgentSpaceName",
+          "documentation":"<p>The name of the AgentSpace.</p>"
+        },
+        "description":{
+          "shape":"Description",
+          "documentation":"<p>The description of the AgentSpace.</p>"
+        },
+        "agentSpaceId":{
+          "shape":"AgentSpaceId",
+          "documentation":"<p>The unique identifier of the AgentSpace</p>",
+          "location":"uri",
+          "locationName":"agentSpaceId"
+        }
+      },
+      "documentation":"<p>Input for updating an existing AgentSpace's properties.</p>"
+    },
+    "UpdateAgentSpaceOutput":{
+      "type":"structure",
+      "required":["agentSpace"],
+      "members":{
+        "agentSpace":{"shape":"AgentSpace"}
+      },
+      "documentation":"<p>Output containing the updated AgentSpace.</p>"
+    },
+    "UpdateAssociationInput":{
+      "type":"structure",
+      "required":[
+        "agentSpaceId",
+        "associationId",
+        "serviceId",
+        "configuration"
+      ],
+      "members":{
+        "agentSpaceId":{
+          "shape":"AgentSpaceId",
+          "documentation":"<p>The unique identifier of the AgentSpace</p>",
+          "location":"uri",
+          "locationName":"agentSpaceId"
+        },
+        "associationId":{
+          "shape":"AssociationId",
+          "documentation":"<p>The unique identifier of the given association.</p>",
+          "location":"uri",
+          "locationName":"associationId"
+        },
+        "serviceId":{
+          "shape":"ServiceId",
+          "documentation":"<p>The unique identifier of the service.</p>"
+        },
+        "configuration":{
+          "shape":"ServiceConfiguration",
+          "documentation":"<p>The updated configuration that directs how AgentSpace interacts with the given service.</p>"
+        },
+        "linkedAssociationIds":{
+          "shape":"LinkedAssociations",
+          "documentation":"<p>Linked Association IDs</p>"
+        }
+      },
+      "documentation":"<p>Input for updating an existing service association.</p>"
+    },
+    "UpdateAssociationOutput":{
+      "type":"structure",
+      "required":["association"],
+      "members":{
+        "association":{"shape":"Association"},
+        "webhook":{
+          "shape":"GenericWebhook",
+          "documentation":"<p>Generic webhook configuration</p>"
+        }
+      },
+      "documentation":"<p>Output containing the updated association and optional webhook configuration.</p>"
+    },
+    "UpdateOperatorAppTeamsInput":{
+      "type":"structure",
+      "required":[
+        "agentSpaceId",
+        "teams"
+      ],
+      "members":{
+        "agentSpaceId":{
+          "shape":"AgentSpaceId",
+          "documentation":"<p>The unique identifier of the AgentSpace</p>",
+          "location":"uri",
+          "locationName":"agentSpaceId"
+        },
+        "teams":{
+          "shape":"TeamList",
+          "documentation":"<p>The list of teams that the Operator App is enabled for.</p>"
+        }
+      },
+      "documentation":"<p>Input for updating the teams that have access to the Operator App.</p>"
+    },
+    "UpdateOperatorAppTeamsOutput":{
+      "type":"structure",
+      "required":[
+        "agentSpaceId",
+        "createdAt",
+        "teams",
+        "authFlow",
+        "operatorAppRoleArn"
+      ],
+      "members":{
+        "agentSpaceId":{
+          "shape":"AgentSpaceId",
+          "documentation":"<p>The unique identifier of the AgentSpace</p>",
+          "location":"uri",
+          "locationName":"agentSpaceId"
+        },
+        "createdAt":{
+          "shape":"SyntheticTimestamp_date_time",
+          "documentation":"<p>The timestamp when the Operator App was enabled.</p>",
+          "deprecated":true,
+          "deprecatedMessage":"To be replaced"
+        },
+        "updatedAt":{
+          "shape":"SyntheticTimestamp_date_time",
+          "documentation":"<p>The timestamp when the Operator App was updated.</p>",
+          "deprecated":true,
+          "deprecatedMessage":"To be replaced"
+        },
+        "teams":{
+          "shape":"TeamList",
+          "documentation":"<p>The list of teams that the Operator App is enabled for.</p>",
+          "deprecated":true,
+          "deprecatedMessage":"To be replaced"
+        },
+        "authFlow":{
+          "shape":"String",
+          "documentation":"<p>The authentication flow configured for the operator App. </p>",
+          "deprecated":true,
+          "deprecatedMessage":"To be replaced"
+        },
+        "operatorAppRoleArn":{
+          "shape":"String",
+          "documentation":"<p>The IAM role end users assume to access AIDevOps APIs</p>",
+          "deprecated":true,
+          "deprecatedMessage":"To be replaced"
+        },
+        "iam":{
+          "shape":"IamAuthConfiguration",
+          "documentation":"<p>Configuration authorizing the OperatorApp with existing IAM session</p>"
+        },
+        "idc":{
+          "shape":"IdcAuthConfiguration",
+          "documentation":"<p>Configuration authorizing the OperatorApp with AWS Identity Center (IdC)</p>"
+        }
+      },
+      "documentation":"<p>Output containing the updated Operator App configuration.</p>"
+    },
+    "ValidationException":{
+      "type":"structure",
+      "required":["message"],
+      "members":{
+        "message":{
+          "shape":"String",
+          "documentation":"<p>A summary of the validation failure.</p>"
+        },
+        "fieldList":{
+          "shape":"ValidationExceptionFieldList",
+          "documentation":"<p>A list of specific failures encountered while validating the input. A member can appear in this list more than once if it failed to satisfy multiple constraints.</p>"
+        }
+      },
+      "documentation":"<p>A standard error for input validation failures. This should be thrown by services when a member of the input structure falls outside of the modeled or documented constraints.</p>",
+      "exception":true
+    },
+    "ValidationExceptionField":{
+      "type":"structure",
+      "required":[
+        "path",
+        "message"
+      ],
+      "members":{
+        "path":{
+          "shape":"String",
+          "documentation":"<p>A JSONPointer expression to the structure member whose value failed to satisfy the modeled constraints.</p>"
+        },
+        "message":{
+          "shape":"String",
+          "documentation":"<p>A detailed description of the validation failure.</p>"
+        }
+      },
+      "documentation":"<p>Describes one specific validation failure for an input member.</p>"
+    },
+    "ValidationExceptionFieldList":{
+      "type":"list",
+      "member":{"shape":"ValidationExceptionField"}
+    },
+    "ValidationStatus":{
+      "type":"string",
+      "documentation":"<p>Represents the validation state of an association.</p>",
+      "enum":[
+        "valid",
+        "invalid",
+        "pending-confirmation"
+      ]
+    },
+    "Webhook":{
+      "type":"structure",
+      "required":[
+        "webhookUrl",
+        "webhookId"
+      ],
+      "members":{
+        "webhookUrl":{
+          "shape":"WebhookWebhookUrlString",
+          "documentation":"<p>Webhook endpoint URL.</p>"
+        },
+        "webhookId":{
+          "shape":"WebhookWebhookIdString",
+          "documentation":"<p>The unique identifier of the Webhook</p>",
+          "location":"uri",
+          "locationName":"webhookId"
+        }
+      },
+      "documentation":"<p>Represents a complete Webhook with all its properties, and unique identifier.</p>"
+    },
+    "WebhookSecret":{
+      "type":"string",
+      "documentation":"<p>Webhook secret for secure webhook communication.</p>",
+      "sensitive":true
+    },
+    "WebhookWebhookIdString":{
+      "type":"string",
+      "max":255,
+      "min":1
+    },
+    "WebhookWebhookUrlString":{
+      "type":"string",
+      "pattern":"https://[a-zA-Z0-9.-]+(?:/.*)?"
+    },
+    "WebhooksList":{
+      "type":"list",
+      "member":{"shape":"Webhook"},
+      "documentation":"<p>A list of Association Webhook resources.</p>"
+    }
+  },
+  "documentation":"<p>AWS DevOps Agent Control Plane Service provides APIs for managing AI-powered development operations, including agent spaces, service associations, and operator applications.</p>"
+}
